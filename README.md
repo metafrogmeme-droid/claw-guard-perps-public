@@ -88,7 +88,14 @@ See [docs/PROOF.md](docs/PROOF.md) for contract address and transaction hashes.
 
 ## X posts
 
-_To be added._
+Live on [@RUNECLAW_AI](https://x.com/RUNECLAW_AI) (5 Nov 2026):
+
+1. [Blank check](https://x.com/RUNECLAW_AI/status/2118411003675176991) — rule gate between a bot and dreamDEX perps
+2. [Proof](https://x.com/RUNECLAW_AI/status/2118411011556336020) — signed, hash-chained receipts anchored on Somnia
+3. [Kill switch](https://x.com/RUNECLAW_AI/status/2118411025544286651) — Somnia Reactivity stop cancels resting orders
+
+Demo (2 min): https://youtu.be/LDJDGLHcAAM
+
 
 ## Licence
 
