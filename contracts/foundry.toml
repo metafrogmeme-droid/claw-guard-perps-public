@@ -1,0 +1,20 @@
+[profile.default]
+src = "src"
+test = "test"
+out = "out"
+libs = []
+solc_version = "0.8.30"
+evm_version = "cancun"
+optimizer = true
+optimizer_runs = 10000
+bytecode_hash = "none"
+
+[fuzz]
+runs = 2000
+
+[fmt]
+line_length = 110
+
+[lint]
+# anchorBatch is all-or-nothing on purpose: one bad receipt reverts the whole batch.
+exclude_lints = ["require-revert-in-loop"]

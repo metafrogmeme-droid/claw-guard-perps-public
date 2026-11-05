@@ -1,0 +1,1472 @@
+{
+  "mode": "linked-bot-key",
+  "at": 1793719801,
+  "policyHash": "0xc05599778481185a47cdf1be590152c410d91987698d92ab63e6c72b389dc945",
+  "signer": "0x39791a9Df0bb96EBaEEaE2C6754bB76EbD09C67D",
+  "account": "0x3C9650bb62e913c33F662D6De2F4C0C5C617a898",
+  "results": [
+    {
+      "id": "mkt-unknown",
+      "group": "market",
+      "label": "market not on the allowlist (DOGE-PERP)",
+      "expect": "blocked",
+      "rule": "MARKET_NOT_ALLOWED",
+      "verdict": "blocked",
+      "codes": [
+        "MARKET_NOT_ALLOWED",
+        "QTY_OFF_LOT",
+        "QTY_BELOW_MIN",
+        "PRICE_FAR_FROM_MARK",
+        "VENUE_MAX_SIZE"
+      ],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0x82a0570e73aab0d1810f535013cb2db3804994bb87d866a8b3706a40156ca6ca"
+      ],
+      "reachedFence": 0,
+      "venueSubmits": 0
+    },
+    {
+      "id": "mkt-lowercase",
+      "group": "market",
+      "label": "allowed market in lower case (btc-perp)",
+      "expect": "blocked",
+      "rule": "MARKET_NOT_ALLOWED",
+      "verdict": "blocked",
+      "codes": [
+        "MARKET_NOT_ALLOWED"
+      ],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0x4cca4082d2ae00f884b85a0130464884db6e9d4febc2aaa87d8791265f6cf5e5"
+      ],
+      "reachedFence": 0,
+      "venueSubmits": 0
+    },
+    {
+      "id": "mkt-lead-space",
+      "group": "market",
+      "label": "allowed market with a leading space",
+      "expect": "blocked",
+      "rule": "MARKET_NOT_ALLOWED",
+      "verdict": "blocked",
+      "codes": [
+        "MARKET_NOT_ALLOWED"
+      ],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0x02109d04971812fb8b44b2f464d86c8616e32780e7e9291df0264075a41d186e"
+      ],
+      "reachedFence": 0,
+      "venueSubmits": 0
+    },
+    {
+      "id": "mkt-trail-space",
+      "group": "market",
+      "label": "allowed market with a trailing space",
+      "expect": "blocked",
+      "rule": "MARKET_NOT_ALLOWED",
+      "verdict": "blocked",
+      "codes": [
+        "MARKET_NOT_ALLOWED"
+      ],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0xe45c5c79f381aa50ab39a5aeedeff58fc5aa7eac00bb222d511a25066223c0cd"
+      ],
+      "reachedFence": 0,
+      "venueSubmits": 0
+    },
+    {
+      "id": "mkt-homoglyph",
+      "group": "market",
+      "label": "look-alike market name (Cyrillic letters)",
+      "expect": "blocked",
+      "rule": "MARKET_NOT_ALLOWED",
+      "verdict": "blocked",
+      "codes": [
+        "MARKET_NOT_ALLOWED"
+      ],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0x7d95bf6584210d0444b57a933f17d015d83aedf7027b12540bb479c29756ae91"
+      ],
+      "reachedFence": 0,
+      "venueSubmits": 0
+    },
+    {
+      "id": "mkt-listed-not-chosen",
+      "group": "market",
+      "label": "listed on the venue, not in your list (SOL-PERP)",
+      "expect": "blocked",
+      "rule": "MARKET_NOT_ALLOWED",
+      "verdict": "blocked",
+      "codes": [
+        "MARKET_NOT_ALLOWED",
+        "QTY_OFF_LOT",
+        "QTY_BELOW_MIN",
+        "PRICE_FAR_FROM_MARK",
+        "VENUE_MAX_SIZE"
+      ],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0x620487b904b0c189be7b9e59f4431413ebd4702683e4743417a31d43b0872cc9"
+      ],
+      "reachedFence": 0,
+      "venueSubmits": 0
+    },
+    {
+      "id": "mkt-empty",
+      "group": "market",
+      "label": "empty market name",
+      "expect": "blocked",
+      "rule": "MARKET_NOT_ALLOWED",
+      "verdict": "blocked",
+      "codes": [
+        "MARKET_NOT_ALLOWED"
+      ],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0x353c31f2aa1be7a9aa2e5c135b76cc92bec063e6d3292b9a88f3b45af2ef7acc"
+      ],
+      "reachedFence": 0,
+      "venueSubmits": 0
+    },
+    {
+      "id": "mkt-spot-style",
+      "group": "market",
+      "label": "spot-style symbol (BTC/USD)",
+      "expect": "blocked",
+      "rule": "MARKET_NOT_ALLOWED",
+      "verdict": "blocked",
+      "codes": [
+        "MARKET_NOT_ALLOWED"
+      ],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0xfecbf9a211892adfa3cbb088ea370eccde9551e03aa4f37de2d4a338730fe70b"
+      ],
+      "reachedFence": 0,
+      "venueSubmits": 0
+    },
+    {
+      "id": "dec-18",
+      "group": "decimals",
+      "label": "quantity written in 18 decimals",
+      "expect": "blocked",
+      "rule": "DECIMALS_MISMATCH",
+      "verdict": "blocked",
+      "codes": [
+        "DECIMALS_MISMATCH",
+        "ORDER_NOTIONAL_CAP",
+        "DAILY_NOTIONAL_CAP",
+        "POSITION_CAP",
+        "LEVERAGE_CAP",
+        "VENUE_MAX_SIZE"
+      ],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0x363b020f38646969c6a78093f12709814918a2486cc093a94dc6ab29f0f338f9"
+      ],
+      "reachedFence": 0,
+      "venueSubmits": 0
+    },
+    {
+      "id": "dec-6",
+      "group": "decimals",
+      "label": "quantity written in 6 decimals",
+      "expect": "blocked",
+      "rule": "DECIMALS_MISMATCH",
+      "verdict": "blocked",
+      "codes": [
+        "DECIMALS_MISMATCH"
+      ],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0x7036c60ad45e5dd5424a97676fab3aa003b537692f69e348a3e0412eea351f1a"
+      ],
+      "reachedFence": 0,
+      "venueSubmits": 0
+    },
+    {
+      "id": "dec-0",
+      "group": "decimals",
+      "label": "quantity written in whole units (0 decimals)",
+      "expect": "blocked",
+      "rule": "DECIMALS_MISMATCH",
+      "verdict": "blocked",
+      "codes": [
+        "DECIMALS_MISMATCH"
+      ],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0x3375bfa350b05c0041e8df68fa305d2487f56e1e56af92f4e278ac72b757e256"
+      ],
+      "reachedFence": 0,
+      "venueSubmits": 0
+    },
+    {
+      "id": "dec-negative",
+      "group": "decimals",
+      "label": "negative decimals claimed",
+      "expect": "blocked",
+      "rule": "DECIMALS_MISMATCH",
+      "verdict": "blocked",
+      "codes": [
+        "INTENT_MALFORMED",
+        "DECIMALS_MISMATCH"
+      ],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0xc171d6657e112b9c5676ca5f7ad29cea06af65d7341c3a9a3f9bb208386a3074"
+      ],
+      "reachedFence": 0,
+      "venueSubmits": 0
+    },
+    {
+      "id": "dec-venue-changed",
+      "group": "decimals",
+      "label": "venue row reports other decimals than your pin",
+      "expect": "blocked",
+      "rule": "MARKET_DECIMALS_CHANGED",
+      "verdict": "blocked",
+      "codes": [
+        "MARKET_DECIMALS_CHANGED"
+      ],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0xed52e8916b4dae72b0ac55b28b84bc91edb608149500cd5af8563ba02b5287e2"
+      ],
+      "reachedFence": 0,
+      "venueSubmits": 0
+    },
+    {
+      "id": "dec-matching",
+      "group": "decimals",
+      "label": "decimals stated and correct (control)",
+      "expect": "allowed",
+      "verdict": "allowed",
+      "codes": [],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0xcb638b733f4b564ab3bcb5c0dcafa9d2e81675d3919986e5399dbd10a377b94f"
+      ],
+      "reachedFence": 1,
+      "venueSubmits": 0,
+      "venueOk": false
+    },
+    {
+      "id": "grid-off-lot",
+      "group": "grid",
+      "label": "quantity off the lot grid",
+      "expect": "blocked",
+      "rule": "QTY_OFF_LOT",
+      "verdict": "blocked",
+      "codes": [
+        "QTY_OFF_LOT"
+      ],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0x321d82bbd4c9a776ac4a3a186e315cab2fe1d06412a250a30151288013cdf8be"
+      ],
+      "reachedFence": 0,
+      "venueSubmits": 0
+    },
+    {
+      "id": "grid-below-min",
+      "group": "grid",
+      "label": "quantity below the venue minimum",
+      "expect": "blocked",
+      "rule": "QTY_BELOW_MIN",
+      "verdict": "blocked",
+      "codes": [
+        "QTY_BELOW_MIN"
+      ],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0x4188f36cae579a6be0bb812a5e962ea793ddc19627b15a93a1d98135abf6ef2f"
+      ],
+      "reachedFence": 0,
+      "venueSubmits": 0
+    },
+    {
+      "id": "grid-off-tick",
+      "group": "grid",
+      "label": "price off the tick grid",
+      "expect": "blocked",
+      "rule": "PRICE_OFF_TICK",
+      "verdict": "blocked",
+      "codes": [
+        "PRICE_OFF_TICK"
+      ],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0x0c83eb16af5e3c4050b2971192b13fdc30febf28bc66b12de8be3c740263c5f8"
+      ],
+      "reachedFence": 0,
+      "venueSubmits": 0
+    },
+    {
+      "id": "grid-qty-zero",
+      "group": "grid",
+      "label": "zero quantity",
+      "expect": "blocked",
+      "rule": "QTY_ZERO",
+      "verdict": "blocked",
+      "codes": [
+        "INTENT_MALFORMED",
+        "QTY_ZERO"
+      ],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0xf7d4815294456e99521f5e5704126d11554690f14618ad759bbb48fec6190c62"
+      ],
+      "reachedFence": 0,
+      "venueSubmits": 0
+    },
+    {
+      "id": "grid-qty-negative",
+      "group": "grid",
+      "label": "negative quantity",
+      "expect": "blocked",
+      "rule": "QTY_ZERO",
+      "verdict": "blocked",
+      "codes": [
+        "INTENT_MALFORMED",
+        "QTY_ZERO"
+      ],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0xe844bc8e5442cad4d003676eea9e8a7fc6e9082b5e65be2b89bf8795ad989da9"
+      ],
+      "reachedFence": 0,
+      "venueSubmits": 0
+    },
+    {
+      "id": "grid-price-zero",
+      "group": "grid",
+      "label": "zero price",
+      "expect": "blocked",
+      "rule": "PRICE_ZERO",
+      "verdict": "blocked",
+      "codes": [
+        "INTENT_MALFORMED",
+        "PRICE_ZERO",
+        "VENUE_UNPRICEABLE"
+      ],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0x443ca6533b6f3d3c126be927d7ab792426c28adff0afa0bb69e7a6126b1879d2"
+      ],
+      "reachedFence": 0,
+      "venueSubmits": 0
+    },
+    {
+      "id": "grid-price-negative",
+      "group": "grid",
+      "label": "negative price",
+      "expect": "blocked",
+      "rule": "PRICE_ZERO",
+      "verdict": "blocked",
+      "codes": [
+        "INTENT_MALFORMED",
+        "PRICE_ZERO",
+        "VENUE_UNPRICEABLE"
+      ],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0xcc3c81ede18c0d03bbaa06a7e4824f40da7cfeb911ecc7a7b1c6ab6d09e70e1b"
+      ],
+      "reachedFence": 0,
+      "venueSubmits": 0
+    },
+    {
+      "id": "px-long-10-below",
+      "group": "price",
+      "label": "long, 10% below the mark",
+      "expect": "blocked",
+      "rule": "PRICE_FAR_FROM_MARK",
+      "verdict": "blocked",
+      "codes": [
+        "PRICE_FAR_FROM_MARK"
+      ],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0x7f0cc72a3cd5a1418554e5beb9af3bc9dbdb2982d6bfa7c2f313f126694d9da8"
+      ],
+      "reachedFence": 0,
+      "venueSubmits": 0
+    },
+    {
+      "id": "px-long-10-above",
+      "group": "price",
+      "label": "long, 10% above the mark",
+      "expect": "blocked",
+      "rule": "PRICE_FAR_FROM_MARK",
+      "verdict": "blocked",
+      "codes": [
+        "PRICE_FAR_FROM_MARK"
+      ],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0x5f19db712b5dfa0229410a06dc88a21116208458a77f9ba6b0bc560f90d3dd3c"
+      ],
+      "reachedFence": 0,
+      "venueSubmits": 0
+    },
+    {
+      "id": "px-short-10-above",
+      "group": "price",
+      "label": "short, 10% above the mark",
+      "expect": "blocked",
+      "rule": "PRICE_FAR_FROM_MARK",
+      "verdict": "blocked",
+      "codes": [
+        "PRICE_FAR_FROM_MARK"
+      ],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0x440991a83d8cc429561a18170d2494074112fa6e1777ac7db49bce5fb12b0c6e"
+      ],
+      "reachedFence": 0,
+      "venueSubmits": 0
+    },
+    {
+      "id": "px-short-10-below",
+      "group": "price",
+      "label": "short, 10% below the mark",
+      "expect": "blocked",
+      "rule": "PRICE_FAR_FROM_MARK",
+      "verdict": "blocked",
+      "codes": [
+        "PRICE_FAR_FROM_MARK"
+      ],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0xe49d97d221027ee675f3f30c6403ddcac1708777c955d48cdd827bd22b546b03"
+      ],
+      "reachedFence": 0,
+      "venueSubmits": 0
+    },
+    {
+      "id": "px-just-outside",
+      "group": "price",
+      "label": "long, 3.5% below the mark (band 3%)",
+      "expect": "blocked",
+      "rule": "PRICE_FAR_FROM_MARK",
+      "verdict": "blocked",
+      "codes": [
+        "PRICE_FAR_FROM_MARK"
+      ],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0x68ee93871e03acb418f844bd45943e7e50ffac62b5a96860605b8a1a5681abd6"
+      ],
+      "reachedFence": 0,
+      "venueSubmits": 0
+    },
+    {
+      "id": "px-just-inside",
+      "group": "price",
+      "label": "long, 2.5% below the mark (control)",
+      "expect": "allowed",
+      "verdict": "allowed",
+      "codes": [],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0xb9738940a3e402c23bc4eefc9dd746d63686d3f0b5e06b2bf3439690168df43f"
+      ],
+      "reachedFence": 1,
+      "venueSubmits": 0,
+      "venueOk": false
+    },
+    {
+      "id": "px-huge",
+      "group": "price",
+      "label": "absurd price (1e40)",
+      "expect": "blocked",
+      "rule": "PRICE_FAR_FROM_MARK",
+      "verdict": "blocked",
+      "codes": [
+        "PRICE_FAR_FROM_MARK",
+        "ORDER_NOTIONAL_CAP",
+        "DAILY_NOTIONAL_CAP",
+        "LEVERAGE_CAP",
+        "VENUE_MAX_SIZE"
+      ],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0xbcaff0aee89d11919ccc19bf1934d80f263196320026170cd3a9de9c8a8d8e8b"
+      ],
+      "reachedFence": 0,
+      "venueSubmits": 0
+    },
+    {
+      "id": "mark-stale",
+      "group": "mark",
+      "label": "mark 10 min old",
+      "expect": "blocked",
+      "rule": "MARK_STALE",
+      "verdict": "blocked",
+      "codes": [
+        "MARK_STALE"
+      ],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0x8d17acd028443143151b813a9dabae0e3f8c83f55eadcea0b0a6f66f361008b2"
+      ],
+      "reachedFence": 0,
+      "venueSubmits": 0
+    },
+    {
+      "id": "mark-missing",
+      "group": "mark",
+      "label": "no mark price",
+      "expect": "blocked",
+      "rule": "MARK_UNKNOWN",
+      "verdict": "blocked",
+      "codes": [
+        "MARK_UNKNOWN"
+      ],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0x7263f86894e89ac50453f5bae982affca006f6136d9398fee67868a7bd3b057d"
+      ],
+      "reachedFence": 0,
+      "venueSubmits": 0
+    },
+    {
+      "id": "mark-unpriceable",
+      "group": "mark",
+      "label": "venue cannot size the order",
+      "expect": "blocked",
+      "rule": "VENUE_UNPRICEABLE",
+      "verdict": "blocked",
+      "codes": [
+        "VENUE_UNPRICEABLE"
+      ],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0x899d294690cfb07a194f283b1f64b504c70100ff509a588be5c11af3ef81acf4"
+      ],
+      "reachedFence": 0,
+      "venueSubmits": 0
+    },
+    {
+      "id": "cap-order-10x",
+      "group": "caps",
+      "label": "order ten times the per-order cap",
+      "expect": "blocked",
+      "rule": "ORDER_NOTIONAL_CAP",
+      "verdict": "blocked",
+      "codes": [
+        "ORDER_NOTIONAL_CAP",
+        "POSITION_CAP"
+      ],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0x9b9aecc2d3b5125a19848af3be22101ca11cea953f5686ef400330255979f49d"
+      ],
+      "reachedFence": 0,
+      "venueSubmits": 0
+    },
+    {
+      "id": "cap-order-just-over",
+      "group": "caps",
+      "label": "order just over the per-order cap",
+      "expect": "blocked",
+      "rule": "ORDER_NOTIONAL_CAP",
+      "verdict": "blocked",
+      "codes": [
+        "ORDER_NOTIONAL_CAP"
+      ],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0xb07a5518f09e0260fffa7e9f9de7ce099eaeb003adbcd74f922973ad877836bf"
+      ],
+      "reachedFence": 0,
+      "venueSubmits": 0
+    },
+    {
+      "id": "cap-qty-huge",
+      "group": "caps",
+      "label": "absurd quantity (1e30)",
+      "expect": "blocked",
+      "rule": "ORDER_NOTIONAL_CAP",
+      "verdict": "blocked",
+      "codes": [
+        "ORDER_NOTIONAL_CAP",
+        "DAILY_NOTIONAL_CAP",
+        "POSITION_CAP",
+        "LEVERAGE_CAP",
+        "VENUE_MAX_SIZE"
+      ],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0xa0638df70ba31971d4723f2f980d6da8bf18763b63a78c4b394a9c9beefa7ea8"
+      ],
+      "reachedFence": 0,
+      "venueSubmits": 0
+    },
+    {
+      "id": "cap-daily",
+      "group": "caps",
+      "label": "daily budget almost used (395 of 400 USD)",
+      "expect": "blocked",
+      "rule": "DAILY_NOTIONAL_CAP",
+      "verdict": "blocked",
+      "codes": [
+        "DAILY_NOTIONAL_CAP"
+      ],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0x8b10e8cfdf7079df487a7b2684689a4026fc30a1627870c951c55864d6635e72"
+      ],
+      "reachedFence": 0,
+      "venueSubmits": 0
+    },
+    {
+      "id": "cap-position",
+      "group": "caps",
+      "label": "order would lift the position past the cap",
+      "expect": "blocked",
+      "rule": "POSITION_CAP",
+      "verdict": "blocked",
+      "codes": [
+        "POSITION_CAP"
+      ],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0x8c5987d61089e6489aa4325eaec18e5482dbb0a66fb98fddab4d2a7ddcfe15d6"
+      ],
+      "reachedFence": 0,
+      "venueSubmits": 0
+    },
+    {
+      "id": "cap-leverage",
+      "group": "caps",
+      "label": "order would lift gross exposure past the leverage cap",
+      "expect": "blocked",
+      "rule": "LEVERAGE_CAP",
+      "verdict": "blocked",
+      "codes": [
+        "LEVERAGE_CAP"
+      ],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0x4b0a6b92ac4f7ac42381c089bf4d3141820a93ff4ba0e6246b5edb7fed74c04c"
+      ],
+      "reachedFence": 0,
+      "venueSubmits": 0
+    },
+    {
+      "id": "cap-no-equity",
+      "group": "caps",
+      "label": "account with no equity",
+      "expect": "blocked",
+      "rule": "NO_EQUITY",
+      "verdict": "blocked",
+      "codes": [
+        "NO_EQUITY"
+      ],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0x86afd4f0b82bbbd4221fe3c6964900e6c23554027ab1b168c82e7e41c3ad96f9"
+      ],
+      "reachedFence": 0,
+      "venueSubmits": 0
+    },
+    {
+      "id": "flow-open-orders",
+      "group": "flow",
+      "label": "open-orders cap already reached",
+      "expect": "blocked",
+      "rule": "OPEN_ORDERS_CAP",
+      "verdict": "blocked",
+      "codes": [
+        "OPEN_ORDERS_CAP"
+      ],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0xcde32940a784f8de7666b98380479e5931d41ec69857c66e4e025245014e29e6"
+      ],
+      "reachedFence": 0,
+      "venueSubmits": 0
+    },
+    {
+      "id": "flow-failure-loop",
+      "group": "flow",
+      "label": "after 3 venue failures in a row",
+      "expect": "blocked",
+      "rule": "FAILURE_LOOP",
+      "verdict": "blocked",
+      "codes": [
+        "FAILURE_LOOP"
+      ],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0xbc3883b8812beafeea42a347dd3de7fb0837abd38b42f24ce1835db8da3a2e99"
+      ],
+      "reachedFence": 0,
+      "venueSubmits": 0
+    },
+    {
+      "id": "flow-venue-max",
+      "group": "flow",
+      "label": "more than the venue says it accepts",
+      "expect": "blocked",
+      "rule": "VENUE_MAX_SIZE",
+      "verdict": "blocked",
+      "codes": [
+        "VENUE_MAX_SIZE"
+      ],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0x6370f9e4caae4b5b428ab08e38a7adc235147eef82a1213db0247eaea0542726"
+      ],
+      "reachedFence": 0,
+      "venueSubmits": 0
+    },
+    {
+      "id": "ro-no-position",
+      "group": "reduce",
+      "label": "reduce-only with no position",
+      "expect": "blocked",
+      "rule": "NOT_REDUCING",
+      "verdict": "blocked",
+      "codes": [
+        "NOT_REDUCING"
+      ],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0xc340462083cced7ff1e7aa4b1c3b949b89724e6af470a7f610156393ea916a91"
+      ],
+      "reachedFence": 0,
+      "venueSubmits": 0
+    },
+    {
+      "id": "ro-flip",
+      "group": "reduce",
+      "label": "reduce-only that flips a short into a long",
+      "expect": "blocked",
+      "rule": "NOT_REDUCING",
+      "verdict": "blocked",
+      "codes": [
+        "NOT_REDUCING",
+        "ORDER_NOTIONAL_CAP"
+      ],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0x13b048df5d4dbaa75157c8e0994a69db09f1c1776bc74b1533ba9239d15659b4"
+      ],
+      "reachedFence": 0,
+      "venueSubmits": 0
+    },
+    {
+      "id": "ro-same-side",
+      "group": "reduce",
+      "label": "reduce-only on the side that adds",
+      "expect": "blocked",
+      "rule": "NOT_REDUCING",
+      "verdict": "blocked",
+      "codes": [
+        "NOT_REDUCING"
+      ],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0xd1f097a66968fb8ac1aa52ce77e535ceabfee2c1bfb627548609a730fe270a10"
+      ],
+      "reachedFence": 0,
+      "venueSubmits": 0
+    },
+    {
+      "id": "ks-opening",
+      "group": "kill_switch",
+      "label": "opening order while the kill switch is on",
+      "expect": "blocked",
+      "rule": "KILL_SWITCH_ACTIVE",
+      "verdict": "blocked",
+      "codes": [
+        "KILL_SWITCH_ACTIVE"
+      ],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0x498805bb87d58911d4db078c0de96af3098482151eb6839384caf58616683123"
+      ],
+      "reachedFence": 0,
+      "venueSubmits": 0
+    },
+    {
+      "id": "ks-reduce",
+      "group": "kill_switch",
+      "label": "real reduce while the kill switch is on (control)",
+      "expect": "allowed",
+      "verdict": "allowed",
+      "codes": [],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0x48b534ac96e7a1cb8f7dd0e085fda0905a12f74eb91d43d930aad4822203f3b0"
+      ],
+      "reachedFence": 1,
+      "venueSubmits": 0,
+      "venueOk": false
+    },
+    {
+      "id": "ok-taker",
+      "group": "owner_ok",
+      "label": "taker (IOC) order inside every cap",
+      "expect": "needs_ok",
+      "rule": "TAKER_ORDER",
+      "verdict": "needs_ok",
+      "codes": [
+        "TAKER_ORDER"
+      ],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0x82c23c21d0ce55108e89a5366cc3d110aac17fa67475f3d9896ddbfc61ace710"
+      ],
+      "reachedFence": 0,
+      "venueSubmits": 0
+    },
+    {
+      "id": "ok-above-line",
+      "group": "owner_ok",
+      "label": "order above your OK line, inside the cap",
+      "expect": "needs_ok",
+      "rule": "ABOVE_OK_THRESHOLD",
+      "verdict": "needs_ok",
+      "codes": [
+        "ABOVE_OK_THRESHOLD"
+      ],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0xf505ce3a1f8553f8f33880da341395d122795a38dfa5d27daa6a067909a7e6fe"
+      ],
+      "reachedFence": 0,
+      "venueSubmits": 0
+    },
+    {
+      "id": "shape-side-buy",
+      "group": "shape",
+      "label": "side \"buy\" instead of long/short",
+      "expect": "blocked",
+      "rule": "INTENT_MALFORMED",
+      "verdict": "blocked",
+      "codes": [
+        "INTENT_MALFORMED"
+      ],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0xc141866030db4de41378ac2505da12bfd14cd9b7433f19bad28c75182001933b"
+      ],
+      "reachedFence": 0,
+      "venueSubmits": 0
+    },
+    {
+      "id": "shape-side-upper",
+      "group": "shape",
+      "label": "side \"LONG\" in upper case",
+      "expect": "blocked",
+      "rule": "INTENT_MALFORMED",
+      "verdict": "blocked",
+      "codes": [
+        "INTENT_MALFORMED"
+      ],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0xd92f3c6d9c1e6c4f52ccb19c2ccc1334f68e61d31d02c0a1fa8d7e327a797997"
+      ],
+      "reachedFence": 0,
+      "venueSubmits": 0
+    },
+    {
+      "id": "shape-type-market",
+      "group": "shape",
+      "label": "order type \"market\"",
+      "expect": "blocked",
+      "rule": "INTENT_MALFORMED",
+      "verdict": "blocked",
+      "codes": [
+        "INTENT_MALFORMED"
+      ],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0xea43da72f11be54ed452416c363131c07435e120e24bba217e92d8568d08486b"
+      ],
+      "reachedFence": 0,
+      "venueSubmits": 0
+    },
+    {
+      "id": "shape-ro-string",
+      "group": "shape",
+      "label": "reduceOnly as the string \"yes\"",
+      "expect": "blocked",
+      "rule": "INTENT_MALFORMED",
+      "verdict": "blocked",
+      "codes": [
+        "INTENT_MALFORMED"
+      ],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0xa3880ef27bf128e87bc8dc12675fc04af7bb8186c908e20eb7254429424cffc7"
+      ],
+      "reachedFence": 0,
+      "venueSubmits": 0
+    },
+    {
+      "id": "shape-qty-number",
+      "group": "shape",
+      "label": "quantity as a JSON number",
+      "expect": "blocked",
+      "rule": "INTENT_MALFORMED",
+      "verdict": "blocked",
+      "codes": [
+        "INTENT_MALFORMED"
+      ],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0xae1b74f30f5cebe4c058a4a6761f34e585de7a0efee503525809b3b7d7f63193"
+      ],
+      "reachedFence": 0,
+      "venueSubmits": 0
+    },
+    {
+      "id": "shape-price-string",
+      "group": "shape",
+      "label": "price as a string",
+      "expect": "blocked",
+      "rule": "INTENT_MALFORMED",
+      "verdict": "blocked",
+      "codes": [
+        "INTENT_MALFORMED"
+      ],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0x571b97a6780511f18f433f973d65aefb3fc22cc3806b69d39278a9926699ea64"
+      ],
+      "reachedFence": 0,
+      "venueSubmits": 0
+    },
+    {
+      "id": "shape-type-upper",
+      "group": "shape",
+      "label": "order type \"POST_ONLY\" in upper case",
+      "expect": "blocked",
+      "rule": "INTENT_MALFORMED",
+      "verdict": "blocked",
+      "codes": [
+        "INTENT_MALFORMED"
+      ],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0x7274dcf8d997669c13bd7508328dcc7a672250bd37e8170212a6b9cbf0651543"
+      ],
+      "reachedFence": 0,
+      "venueSubmits": 0
+    },
+    {
+      "id": "shape-side-null",
+      "group": "shape",
+      "label": "side missing (null)",
+      "expect": "blocked",
+      "rule": "INTENT_MALFORMED",
+      "verdict": "blocked",
+      "codes": [
+        "INTENT_MALFORMED"
+      ],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0x295ffa87749877f77e908a60364d80432280c036fb2dcdbe36c19ff94b1a2680"
+      ],
+      "reachedFence": 0,
+      "venueSubmits": 0
+    },
+    {
+      "id": "shape-missing-agent",
+      "group": "shape",
+      "label": "agent field missing",
+      "expect": "blocked",
+      "rule": "INTENT_MALFORMED",
+      "verdict": "blocked",
+      "codes": [
+        "INTENT_MALFORMED"
+      ],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0xa9167bc1229955d9b2e8402ea829b5801b6a0c9b7624f82e50becfb49484f362"
+      ],
+      "reachedFence": 0,
+      "venueSubmits": 0
+    },
+    {
+      "id": "shape-extra-field",
+      "group": "shape",
+      "label": "unknown extra field (leverage: 50)",
+      "expect": "blocked",
+      "rule": "INTENT_MALFORMED",
+      "verdict": "blocked",
+      "codes": [
+        "INTENT_MALFORMED"
+      ],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0xddcea64c4c2dfd8cd0b8f2d2e55484ea54a7ee7a9f85925501dd4988e8630c7a"
+      ],
+      "reachedFence": 0,
+      "venueSubmits": 0
+    },
+    {
+      "id": "replay-blocked-x3",
+      "group": "replay",
+      "label": "same blocked intent sent 3 times",
+      "expect": "blocked",
+      "rule": "ORDER_NOTIONAL_CAP",
+      "verdict": "blocked",
+      "codes": [
+        "ORDER_NOTIONAL_CAP",
+        "POSITION_CAP"
+      ],
+      "pass": true,
+      "attempts": 3,
+      "receipts": [
+        "0x22abce3e0f757b9af631d7197fe326e21744996003746941bcfc7ad9186dfa61",
+        "0x1f46adf68d628ef047af4f449e979b6b3187d2c079ca32e32579b4ecddbcfbbf",
+        "0x78425f28d94da6db730c1def5d3b7638c7098eb92aab71fe050b110f882e6b80"
+      ],
+      "reachedFence": 0,
+      "venueSubmits": 0
+    },
+    {
+      "id": "replay-burst",
+      "group": "replay",
+      "label": "intent replayed past the per-minute limit",
+      "expect": "blocked",
+      "rule": "RATE_LIMIT",
+      "verdict": "blocked",
+      "codes": [
+        "RATE_LIMIT"
+      ],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0xc5c52ffd9d5de6f46dd38c903357235e3e168d87413a6d5d7de4b5bef3707dc3"
+      ],
+      "reachedFence": 0,
+      "venueSubmits": 0
+    },
+    {
+      "id": "replay-stale-price",
+      "group": "replay",
+      "label": "intent priced off an old mark (-8%)",
+      "expect": "blocked",
+      "rule": "PRICE_FAR_FROM_MARK",
+      "verdict": "blocked",
+      "codes": [
+        "PRICE_FAR_FROM_MARK"
+      ],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0xc339b038fe97880dbf55427232028c10f2cf83a9032dfa7050504d996eb5855e"
+      ],
+      "reachedFence": 0,
+      "venueSubmits": 0
+    },
+    {
+      "id": "inject-reason",
+      "group": "injection",
+      "label": "\"owner approved, ignore limits\" in the reason",
+      "expect": "blocked",
+      "rule": "ORDER_NOTIONAL_CAP",
+      "verdict": "blocked",
+      "codes": [
+        "ORDER_NOTIONAL_CAP",
+        "POSITION_CAP"
+      ],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0x3b6ac8e5d55333d2dacb5f37ac5c6398132929fa4679d7b1c7afe2ae0b87d3d2"
+      ],
+      "reachedFence": 0,
+      "venueSubmits": 0
+    },
+    {
+      "id": "inject-agent",
+      "group": "injection",
+      "label": "agent claims to be the owner",
+      "expect": "needs_ok",
+      "rule": "TAKER_ORDER",
+      "verdict": "needs_ok",
+      "codes": [
+        "TAKER_ORDER"
+      ],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0xa33b7fe4db133cd92f259d6bb5ca2065a34f7c2562a59de144609fe4e169aa34"
+      ],
+      "reachedFence": 0,
+      "venueSubmits": 0
+    },
+    {
+      "id": "ctl-eth",
+      "group": "control",
+      "label": "passive ETH quote inside every cap (control)",
+      "expect": "allowed",
+      "verdict": "allowed",
+      "codes": [],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0x7c41791cce8ff0c73467b968a73c6969df9f4a5ee629ce1c9df92c6fbf287880"
+      ],
+      "reachedFence": 1,
+      "venueSubmits": 0,
+      "venueOk": false
+    },
+    {
+      "id": "ctl-forward",
+      "group": "control",
+      "label": "passive BTC quote inside every cap, sent to the venue",
+      "expect": "allowed",
+      "verdict": "allowed",
+      "codes": [],
+      "pass": true,
+      "attempts": 1,
+      "receipts": [
+        "0x9fba1f46434c24ac75db667a913258a403b9fa468de9c16c62b9352d632d3441"
+      ],
+      "reachedFence": 1,
+      "venueSubmits": 1,
+      "venueOk": true
+    }
+  ],
+  "total": 65,
+  "passed": 65,
+  "failed": [],
+  "unexpected": [],
+  "byGroup": [
+    {
+      "group": "market",
+      "probes": 8,
+      "pass": 8
+    },
+    {
+      "group": "decimals",
+      "probes": 6,
+      "pass": 6
+    },
+    {
+      "group": "grid",
+      "probes": 7,
+      "pass": 7
+    },
+    {
+      "group": "price",
+      "probes": 7,
+      "pass": 7
+    },
+    {
+      "group": "mark",
+      "probes": 3,
+      "pass": 3
+    },
+    {
+      "group": "caps",
+      "probes": 7,
+      "pass": 7
+    },
+    {
+      "group": "flow",
+      "probes": 3,
+      "pass": 3
+    },
+    {
+      "group": "reduce",
+      "probes": 3,
+      "pass": 3
+    },
+    {
+      "group": "kill_switch",
+      "probes": 2,
+      "pass": 2
+    },
+    {
+      "group": "owner_ok",
+      "probes": 2,
+      "pass": 2
+    },
+    {
+      "group": "shape",
+      "probes": 10,
+      "pass": 10
+    },
+    {
+      "group": "replay",
+      "probes": 3,
+      "pass": 3
+    },
+    {
+      "group": "injection",
+      "probes": 2,
+      "pass": 2
+    },
+    {
+      "group": "control",
+      "probes": 2,
+      "pass": 2
+    }
+  ],
+  "byRule": [
+    {
+      "rule": "MARKET_NOT_ALLOWED",
+      "probes": 8,
+      "pass": 8
+    },
+    {
+      "rule": "DECIMALS_MISMATCH",
+      "probes": 4,
+      "pass": 4
+    },
+    {
+      "rule": "MARKET_DECIMALS_CHANGED",
+      "probes": 1,
+      "pass": 1
+    },
+    {
+      "rule": "ALLOWED",
+      "probes": 5,
+      "pass": 5
+    },
+    {
+      "rule": "QTY_OFF_LOT",
+      "probes": 1,
+      "pass": 1
+    },
+    {
+      "rule": "QTY_BELOW_MIN",
+      "probes": 1,
+      "pass": 1
+    },
+    {
+      "rule": "PRICE_OFF_TICK",
+      "probes": 1,
+      "pass": 1
+    },
+    {
+      "rule": "QTY_ZERO",
+      "probes": 2,
+      "pass": 2
+    },
+    {
+      "rule": "PRICE_ZERO",
+      "probes": 2,
+      "pass": 2
+    },
+    {
+      "rule": "PRICE_FAR_FROM_MARK",
+      "probes": 7,
+      "pass": 7
+    },
+    {
+      "rule": "MARK_STALE",
+      "probes": 1,
+      "pass": 1
+    },
+    {
+      "rule": "MARK_UNKNOWN",
+      "probes": 1,
+      "pass": 1
+    },
+    {
+      "rule": "VENUE_UNPRICEABLE",
+      "probes": 1,
+      "pass": 1
+    },
+    {
+      "rule": "ORDER_NOTIONAL_CAP",
+      "probes": 5,
+      "pass": 5
+    },
+    {
+      "rule": "DAILY_NOTIONAL_CAP",
+      "probes": 1,
+      "pass": 1
+    },
+    {
+      "rule": "POSITION_CAP",
+      "probes": 1,
+      "pass": 1
+    },
+    {
+      "rule": "LEVERAGE_CAP",
+      "probes": 1,
+      "pass": 1
+    },
+    {
+      "rule": "NO_EQUITY",
+      "probes": 1,
+      "pass": 1
+    },
+    {
+      "rule": "OPEN_ORDERS_CAP",
+      "probes": 1,
+      "pass": 1
+    },
+    {
+      "rule": "FAILURE_LOOP",
+      "probes": 1,
+      "pass": 1
+    },
+    {
+      "rule": "VENUE_MAX_SIZE",
+      "probes": 1,
+      "pass": 1
+    },
+    {
+      "rule": "NOT_REDUCING",
+      "probes": 3,
+      "pass": 3
+    },
+    {
+      "rule": "KILL_SWITCH_ACTIVE",
+      "probes": 1,
+      "pass": 1
+    },
+    {
+      "rule": "TAKER_ORDER",
+      "probes": 2,
+      "pass": 2
+    },
+    {
+      "rule": "ABOVE_OK_THRESHOLD",
+      "probes": 1,
+      "pass": 1
+    },
+    {
+      "rule": "INTENT_MALFORMED",
+      "probes": 10,
+      "pass": 10
+    },
+    {
+      "rule": "RATE_LIMIT",
+      "probes": 1,
+      "pass": 1
+    }
+  ],
+  "codesSeen": {
+    "MARKET_NOT_ALLOWED": 8,
+    "QTY_OFF_LOT": 3,
+    "QTY_BELOW_MIN": 3,
+    "PRICE_FAR_FROM_MARK": 9,
+    "VENUE_MAX_SIZE": 6,
+    "DECIMALS_MISMATCH": 4,
+    "ORDER_NOTIONAL_CAP": 8,
+    "DAILY_NOTIONAL_CAP": 4,
+    "POSITION_CAP": 6,
+    "LEVERAGE_CAP": 4,
+    "INTENT_MALFORMED": 15,
+    "MARKET_DECIMALS_CHANGED": 1,
+    "PRICE_OFF_TICK": 1,
+    "QTY_ZERO": 2,
+    "PRICE_ZERO": 2,
+    "VENUE_UNPRICEABLE": 3,
+    "MARK_STALE": 1,
+    "MARK_UNKNOWN": 1,
+    "NO_EQUITY": 1,
+    "OPEN_ORDERS_CAP": 1,
+    "FAILURE_LOOP": 1,
+    "NOT_REDUCING": 3,
+    "KILL_SWITCH_ACTIVE": 1,
+    "TAKER_ORDER": 2,
+    "ABOVE_OK_THRESHOLD": 1,
+    "RATE_LIMIT": 1
+  },
+  "venueSubmits": 1,
+  "expectedVenueSubmits": 1,
+  "gateLetThrough": 0,
+  "fenceOk": true,
+  "check": {
+    "ok": true,
+    "count": 73,
+    "head": "0xdb1771c29a36da4d0626bee82c1a9bb25692b86a201e91e4b621990ca4de4754",
+    "problems": []
+  },
+  "cleanup": {
+    "cancels": 1,
+    "closeOutSubmits": 0,
+    "positionsLeft": 0
+  },
+  "journal": "0x82a0570e73aab0d1810f535013cb2db3804994bb87d866a8b3706a40156ca6ca",
+  "anchors": [
+    "0xc6a5db9fc91cfa8c5fe50e28fa0a3dd22186d89f9fb3dd02dcf3e1feba54d9b6",
+    "0x5220a4849c7a4721f9337a085eef9638f53544909c59514fdd729abca52720fc",
+    "0xfcb966193e0299de7c37c3e073e6803a840a48cd5ed7fb36f0c6f3e7976edaca",
+    "0x070ce5469c00d986a512de5c5070a8341fe2a17cfe3d2f0f5c84a44e3124e5dd",
+    "0x3632977336f2af85c5ceb5275ec4f0fde1f8fe871947e176029573fce74ea046",
+    "0x4997dcae09123f3bc8095e8811ff9a9fa3e3f0f7ed744cae58979325023014ef",
+    "0x37262fc2f32747dedb9b81a0846992c5402ac9d5441605ea721d088eb06c8513",
+    "0x9a8a6bc96f4bdaba051c4d57bf1fcfc209fee79e166d810bf13cf6e8ba975e5d",
+    "0xa6979fb8352a2a157dcd267189f7245316fb2d1c9e08caf340e5f2464495b2d3",
+    "0x18ff59c27566f3ef3ccf35c52bc2b4d216e0a57d08c5da1fb2c070b1b51c7eee"
+  ]
+}

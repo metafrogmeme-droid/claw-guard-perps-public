@@ -1,0 +1,26 @@
+date: 2026-11-05
+kind: 6h live block (after canary; Patrick go t558u; --strategy skew; main a804a28 incl. #35+#36)
+start: 2026-11-05 17:00:14 CET (UTC+1) / 2026-11-05T16:00:14.278Z
+deadline: 2026-11-05 23:00:14 CET (UTC+1) / 2026-11-05T22:00:14.000Z
+hours: 6
+strategy: skew (accepted by runner)
+session_out: runs/session-6h-2026-11-05
+watcher_out: runs/session-6h-watch-2026-11-05.jsonl
+watcher_seconds: 21900 (deadline + 5 min)
+start_equity: 2000.166512104974103267 USDso
+gas_at_start: 4.43371257 STT
+session_pnpm_pid: 3733341
+session_node_pid: 3733415
+watcher_pnpm_pid: 3733844
+watcher_node_pid: 3733874
+repo_head: a804a28
+env: ~/.config/claw-guard-perps/env
+session_flags: --live --hours 6 --cycle 120 --probe 5 --call-timeout 30 --grace 60 --closeout 180 --stall 900 --strategy skew
+watcher_flags: --react --policy session --seconds 21900
+detached: setsid nohup (survives this automation run)
+preflight: doctor-pre-6h.txt + fund-pre-6h.txt (gas 4.434 STT, equity 2000.167 USDso, isStopped=false, 0 orders/positions, funding ready)
+canary: done, flat (watchdogFired after host clock jump; Patrick still said Go — not treated as hard block)
+status_at_start: {"state":"running","cycles":1,"startedAt":1793894414,"deadline":1793916014,"counts":{"allowed":4,"blocked":0,"needsOk":0,"ownerYes":0,"sent":4,"venueOk":4,"cancels":0},"startEquity":"2000.166512104974103267","equity":"2000.166512104974103267","receipts":8}
+note: Old routine "Perps 6h block after canary" (16:15) missed its window — DELETE it. Close check: see six-hour-close-routine-spec.md (~23:10 CET). Watcher was restarted once at 17:00:44 CET after empty --seconds launch bug; session was never killed.
+command: setsid nohup pnpm cli session --live --env ~/.config/claw-guard-perps/env --hours 6 --cycle 120 --probe 5 --call-timeout 30 --grace 60 --closeout 180 --stall 900 --strategy skew --out runs/session-6h-2026-11-05 > runs/session-6h-2026-11-05.log 2>&1 < /dev/null &
+watcher_command: setsid nohup pnpm cli watch --react --env ~/.config/claw-guard-perps/env --seconds 21900 --policy session --out runs/session-6h-watch-2026-11-05.jsonl >> runs/session-6h-watch-2026-11-05.log 2>&1 < /dev/null &

@@ -1,0 +1,22 @@
+date: 2026-11-05
+kind: 1h canary (daily Perps routine; --strategy skew; main a0c0c4b incl. #35)
+start: 2026-11-05 14:09:42 CET (UTC+1) / 2026-11-05T13:09:42.458Z
+deadline: 2026-11-05 15:09:42 CET (UTC+1) / 2026-11-05T14:09:42.000Z
+hours: 1
+strategy: skew (accepted by runner)
+session_out: runs/session-daily-2026-11-05
+watcher_out: runs/session-daily-watch-2026-11-05.jsonl
+watcher_seconds: 3900 (deadline + 5 min)
+start_equity: 2000.21625422937894261 USDso
+session_pnpm_pid: 3703673
+session_node_pid: 3703732
+watcher_pnpm_pid: 3703669
+watcher_node_pid: 3703743
+repo_head: a0c0c4b
+env: ~/.config/claw-guard-perps/env
+session_flags: --live --hours 1 --cycle 120 --probe 5 --call-timeout 30 --grace 60 --closeout 180 --stall 900 --strategy skew
+watcher_flags: --react --policy session --seconds 3900
+detached: setsid nohup (survives this automation run)
+preflight: doctor-pre.txt + fund-pre.txt (gas 4.492 STT, equity 2000.216 USDso, isStopped=false, 0 orders/positions, funding ready)
+status_at_start: {"state": "running", "cycles": 1, "startedAt": 1793884182, "deadline": 1793887782, "now": 1793884227, "counts": {"allowed": 4, "blocked": 0, "needsOk": 0, "ownerYes": 0, "sent": 4, "venueOk": 4, "cancels": 0}, "blockedCodes": {}, "startEquity": "2000.21625422937894261", "equity": "2000.21625422937894261", "receipts": 8}
+note: wrap-up is the separate Perps daily wrap-up routine (~15:45 CET). After flat close, Perps 6h block after canary may start the 6h live skew block (Patrick go 5 Nov).

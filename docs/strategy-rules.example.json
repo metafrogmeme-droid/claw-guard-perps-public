@@ -1,0 +1,15 @@
+{
+  "profit": {
+    "makerFeeBps": 2,
+    "minEdgeBps": 3,
+    "takeProfitBps": 50,
+    "maxSessionLossUsd": "1",
+    "postOnly": true
+  },
+  "cooldown": {
+    "enabled": true,
+    "lossStreak": 2,
+    "cooldownSec": 600,
+    "lossToleranceCents": 0
+  }
+}

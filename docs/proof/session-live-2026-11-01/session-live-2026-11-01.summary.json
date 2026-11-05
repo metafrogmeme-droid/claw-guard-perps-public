@@ -1,0 +1,68 @@
+{
+  "note": "Written by the operator wrap-up. The session runner stalled after its last probe (21:02 CET) and was stopped at 21:53 CET; it never wrote its own summary. Flatten was done with `claw-guard kill` into a separate journal.",
+  "session": {
+    "journal": "session-live-2026-11-01.jsonl",
+    "journalId": "0x38e0c9680f9d6d512ad11bac17492d32b744d3fadcd885de05f10dac48df36c7",
+    "receipts": 23,
+    "startedAt": "2026-11-01T18:32:20+01:00",
+    "plannedEnd": "2026-11-01T21:32:20+01:00",
+    "cycles": 69,
+    "counts": {
+      "allowed": 5,
+      "blocked": 12,
+      "needsOk": 1,
+      "ownerYes": 0,
+      "sent": 5,
+      "venueOk": 5,
+      "cancels": 0
+    },
+    "blockedCodes": {
+      "MARKET_NOT_ALLOWED": 2,
+      "QTY_OFF_LOT": 2,
+      "QTY_BELOW_MIN": 2,
+      "PRICE_FAR_FROM_MARK": 4,
+      "VENUE_MAX_SIZE": 4,
+      "DECIMALS_MISMATCH": 2,
+      "ORDER_NOTIONAL_CAP": 4,
+      "DAILY_NOTIONAL_CAP": 2,
+      "POSITION_CAP": 4,
+      "LEVERAGE_CAP": 2,
+      "NOT_REDUCING": 2,
+      "PRICE_OFF_TICK": 2
+    },
+    "anchors": [
+      "0xacbc8acd0f1576d1262c0110083cbdc801ddba9c7b9fe37508593fc211162f46",
+      "0x0651d2bd50004bcf481e05aa28a8503e3cfcc836bdbdc3716f4aaf7ad7e22954",
+      "0x9e58c53505878233ecc94729e4f6274511d8b5b097f9d29fd82f258874bc842a"
+    ]
+  },
+  "wrapup": {
+    "journal": "session-live-2026-11-01-wrapup.jsonl",
+    "journalId": "0x24b6acd2840a02153e34eab6ef1c66a90e426a78101108da1832aad4610f7e50",
+    "receipts": 7,
+    "cancels": [
+      "0x5642c46af1be718381e8dafcd037eca92f2e41f85cc9bb78ce7c81e7fde41172",
+      "0xd11bf13cf38797867e874f24ce083706d172d58fd3c1117534f2ec38dc2cb443",
+      "0xa583c0af2db3efabd79ee691929f5a5d3535b1fee832e8ca1470d8ecaf410890",
+      "0xc4002e89ef8dc43f420025e84351359dacfe9d6d69000971b23150a237d85de6"
+    ],
+    "reduceOnlyClose": {
+      "market": "ETH-PERP",
+      "side": "short",
+      "orderType": "ioc",
+      "quantity": "0.0047",
+      "txHash": "0x19a0ae1c3ae86ed9719c7f9ba977d10de506e52fd7c39578001643af73d7a875"
+    },
+    "anchors": [
+      "0x7636f28448f8b104beef07d34efa26431a4c1b46e9d64f82958b47818f0c5873"
+    ]
+  },
+  "end": {
+    "openOrders": 0,
+    "positions": 0,
+    "onChainStop": "off (isStopped=false)",
+    "startEquityUsd": "1000.001008",
+    "endEquityUsd": "1000.035993030247569859",
+    "gasLeftStt": "5.64146397"
+  }
+}

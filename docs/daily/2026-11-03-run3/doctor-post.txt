@@ -1,0 +1,11 @@
+# doctor post-session 2026-11-03 20:22 CET
+on-chain stop (isStopped 0x39791a9Df0bb96EBaEEaE2C6754bB76EbD09C67D) = false
+network Tokyo testnet (chain 50383), mode linked-bot-key
+account 0x3C9650bb62e913c33F662D6De2F4C0C5C617a898, sender 0x39791a9Df0bb96EBaEEaE2C6754bB76EbD09C67D
+gas balance 4.798892124 STT
+margin equity 2000.243497902277267913 USDso, open orders 0, positions 0
+  BTC-PERP: mark 77523.034599965138 (4s old), imf 250 bps, link place=true cancel=true
+  ETH-PERP: mark 2288.7503853432275 (6s old), imf 250 bps, link place=true cancel=true
+  SOL-PERP: mark 93.2173519959445 (7s old), imf 250 bps, link place=true cancel=true
+policy 0xe906e0bddca7d0d4cf99d7a739c4c21fbe4ed17bb9bdf7bb625629c79918b976
+funding: ready for a live run

@@ -1,0 +1,22 @@
+2026-11-01T17:25:06.359Z watching 0xeda7071961c518ce154062cb6d8e94219f8c29b3 for signer 0x39791a9Df0bb96EBaEEaE2C6754bB76EbD09C67D and MarginBank 0x478769e1177c0773c43a593dccc4ad15f15f1394 for account 0x3C9650bb62e913c33F662D6De2F4C0C5C617a898 over wss://api.hideki2.infra.testnet.somnia.network/ws (somnia_watch)
+2026-11-01T17:25:09.654Z [positions] subscribed to PositionUpdated for 0x3C9650bb62e913c33F662D6De2F4C0C5C617a898
+2026-11-01T17:25:10.795Z [watch] subscribed; isStopped(0x39791a9Df0bb96EBaEEaE2C6754bB76EbD09C67D) = false
+2026-11-01T17:26:04.306Z [push] Anchored journal 0xa6701a926050ca7cd6f30e404a820459dbd891f850040c4acb71ece275d6976d seq 0 verdict 5 receipt 0xa6701a926050ca7cd6f30e404a820459dbd891f850040c4acb71ece275d6976d | isStopped after = true
+2026-11-01T17:26:04.306Z [react] on-chain stop: Anchored journal 0xa6701a926050ca7cd6f30e404a820459dbd891f850040c4acb71ece275d6976d seq 0
+2026-11-01T17:26:04.309Z [push] Stopped journal 0xa6701a926050ca7cd6f30e404a820459dbd891f850040c4acb71ece275d6976d seq 0 | isStopped after = true
+2026-11-01T17:26:24.784Z [react] kill switch on: open orders 1 -> 0, positions 0 -> 0
+2026-11-01T17:26:42.954Z [push] Anchored journal 0x87ed77419586d908956570655036a5641a908849152330e2bf45aa19c04b585b seq 0 verdict 1 receipt 0x87ed77419586d908956570655036a5641a908849152330e2bf45aa19c04b585b | isStopped after = true
+2026-11-01T17:26:42.954Z [push] Anchored journal 0x87ed77419586d908956570655036a5641a908849152330e2bf45aa19c04b585b seq 1 verdict 4 receipt 0x39fe3db03e46abda4353fd967c8d7d0e26cb16836e22a8aa5573aa6973eca0e8 | isStopped after = true
+2026-11-01T17:26:50.286Z [push] Anchored journal 0x39fb54bfb668f737d9f2833af494f5ddd6cf771d11bcd72a5072fd9436e56e3a seq 0 verdict 5 receipt 0x39fb54bfb668f737d9f2833af494f5ddd6cf771d11bcd72a5072fd9436e56e3a | isStopped after = true
+2026-11-01T17:26:50.286Z [push] Stopped journal 0x39fb54bfb668f737d9f2833af494f5ddd6cf771d11bcd72a5072fd9436e56e3a seq 0 | isStopped after = true
+2026-11-01T17:26:50.286Z [push] Anchored journal 0x39fb54bfb668f737d9f2833af494f5ddd6cf771d11bcd72a5072fd9436e56e3a seq 1 verdict 4 receipt 0x5df94d4681e64cc847c1141219005291414ca5b3f79ef3ea57bc1019f0b76001 | isStopped after = true
+2026-11-01T17:26:57.307Z [push] Anchored journal 0xa6701a926050ca7cd6f30e404a820459dbd891f850040c4acb71ece275d6976d seq 1 verdict 6 receipt 0xe67179f262e20085bfc3b78f102ad7bde134d712f44994969e61818cf6313808 | isStopped after = false
+2026-11-01T17:26:57.307Z [react] re-armed on-chain (seq 1)
+2026-11-01T17:26:57.307Z [push] Rearmed journal 0xa6701a926050ca7cd6f30e404a820459dbd891f850040c4acb71ece275d6976d seq 1 | isStopped after = false
+2026-11-01T17:27:34.069Z [push] PositionUpdated pool 0x4181dd08E73BbCdd1Ba3E615A18f6abD941b94C0 size 14000 realizedPnl 0 | Allowed: within your limits (BTC-PERP 10.92 USD)
+2026-11-01T17:27:47.054Z [push] PositionUpdated pool 0x4181dd08E73BbCdd1Ba3E615A18f6abD941b94C0 size 0 realizedPnl 0.000112 | Allowed: within your limits (flat)
+2026-11-01T17:28:22.111Z [push] Anchored journal 0x385d4ea42c76d4074585eb51c99d93b2ef53523fd3cff9d0559f502c7071bf90 seq 0 verdict 3 receipt 0x385d4ea42c76d4074585eb51c99d93b2ef53523fd3cff9d0559f502c7071bf90 | isStopped after = false
+2026-11-01T17:28:22.111Z [push] Anchored journal 0x385d4ea42c76d4074585eb51c99d93b2ef53523fd3cff9d0559f502c7071bf90 seq 1 verdict 4 receipt 0xed9784b50cd3523715ea9ac3e2bb0a4386609e4f1af2aa80befb24c4b64c1ae7 | isStopped after = false
+2026-11-01T17:28:22.111Z [push] Anchored journal 0x385d4ea42c76d4074585eb51c99d93b2ef53523fd3cff9d0559f502c7071bf90 seq 2 verdict 1 receipt 0x04f32964a354d0871b379c1157f6bc5a2a7e3646cf28e883df7837e6d0761792 | isStopped after = false
+2026-11-01T17:28:22.111Z [push] Anchored journal 0x385d4ea42c76d4074585eb51c99d93b2ef53523fd3cff9d0559f502c7071bf90 seq 3 verdict 4 receipt 0xda4b1e87ca91162b333a7ae333b9165b1d17bd769bee7aaa4ef23cd9c5f795ba | isStopped after = false
+2026-11-01T17:28:29.891Z watch ended: 15 pushes, 1 reactions

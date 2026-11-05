@@ -1,0 +1,69 @@
+2026-11-03T15:24:29.513Z [probe] PASS mkt-unknown: market not on the allowlist (DOGE-PERP) -> blocked MARKET_NOT_ALLOWED,QTY_OFF_LOT,QTY_BELOW_MIN,PRICE_FAR_FROM_MARK,VENUE_MAX_SIZE
+2026-11-03T15:24:33.128Z [probe] PASS mkt-lowercase: allowed market in lower case (btc-perp) -> blocked MARKET_NOT_ALLOWED
+2026-11-03T15:24:36.319Z [probe] PASS mkt-lead-space: allowed market with a leading space -> blocked MARKET_NOT_ALLOWED
+2026-11-03T15:24:39.689Z [probe] PASS mkt-trail-space: allowed market with a trailing space -> blocked MARKET_NOT_ALLOWED
+2026-11-03T15:24:43.410Z [probe] PASS mkt-homoglyph: look-alike market name (Cyrillic letters) -> blocked MARKET_NOT_ALLOWED
+2026-11-03T15:24:49.129Z [probe] PASS mkt-listed-not-chosen: listed on the venue, not in your list (SOL-PERP) -> blocked MARKET_NOT_ALLOWED,QTY_OFF_LOT,QTY_BELOW_MIN,PRICE_FAR_FROM_MARK,VENUE_MAX_SIZE
+2026-11-03T15:24:52.264Z [probe] PASS mkt-empty: empty market name -> blocked MARKET_NOT_ALLOWED
+2026-11-03T15:24:54.944Z [probe] PASS mkt-spot-style: spot-style symbol (BTC/USD) -> blocked MARKET_NOT_ALLOWED
+2026-11-03T15:25:00.062Z [probe] PASS dec-18: quantity written in 18 decimals -> blocked DECIMALS_MISMATCH,ORDER_NOTIONAL_CAP,DAILY_NOTIONAL_CAP,POSITION_CAP,LEVERAGE_CAP,VENUE_MAX_SIZE
+2026-11-03T15:25:06.011Z [probe] PASS dec-6: quantity written in 6 decimals -> blocked DECIMALS_MISMATCH
+2026-11-03T15:25:10.554Z [probe] PASS dec-0: quantity written in whole units (0 decimals) -> blocked DECIMALS_MISMATCH
+2026-11-03T15:25:15.744Z [probe] PASS dec-negative: negative decimals claimed -> blocked INTENT_MALFORMED,DECIMALS_MISMATCH
+2026-11-03T15:25:24.345Z [probe] PASS dec-venue-changed: venue row reports other decimals than your pin -> blocked MARKET_DECIMALS_CHANGED
+2026-11-03T15:25:29.160Z [probe] PASS dec-matching: decimals stated and correct (control) -> allowed 
+2026-11-03T15:25:33.983Z [probe] PASS grid-off-lot: quantity off the lot grid -> blocked QTY_OFF_LOT
+2026-11-03T15:25:39.005Z [probe] PASS grid-below-min: quantity below the venue minimum -> blocked QTY_BELOW_MIN
+2026-11-03T15:25:43.712Z [probe] PASS grid-off-tick: price off the tick grid -> blocked PRICE_OFF_TICK
+2026-11-03T15:25:48.343Z [probe] PASS grid-qty-zero: zero quantity -> blocked INTENT_MALFORMED,QTY_ZERO
+2026-11-03T15:25:52.906Z [probe] PASS grid-qty-negative: negative quantity -> blocked INTENT_MALFORMED,QTY_ZERO
+2026-11-03T15:25:56.551Z [probe] PASS grid-price-zero: zero price -> blocked INTENT_MALFORMED,PRICE_ZERO,VENUE_UNPRICEABLE
+2026-11-03T15:25:59.726Z [probe] PASS grid-price-negative: negative price -> blocked INTENT_MALFORMED,PRICE_ZERO,VENUE_UNPRICEABLE
+2026-11-03T15:26:04.361Z [probe] PASS px-long-10-below: long, 10% below the mark -> blocked PRICE_FAR_FROM_MARK
+2026-11-03T15:26:08.721Z [probe] PASS px-long-10-above: long, 10% above the mark -> blocked PRICE_FAR_FROM_MARK
+2026-11-03T15:26:13.691Z [probe] PASS px-short-10-above: short, 10% above the mark -> blocked PRICE_FAR_FROM_MARK
+2026-11-03T15:26:19.814Z [probe] PASS px-short-10-below: short, 10% below the mark -> blocked PRICE_FAR_FROM_MARK
+2026-11-03T15:26:29.202Z [probe] PASS px-just-outside: long, 3.5% below the mark (band 3%) -> blocked PRICE_FAR_FROM_MARK
+2026-11-03T15:26:33.790Z [probe] PASS px-just-inside: long, 2.5% below the mark (control) -> allowed 
+2026-11-03T15:26:38.669Z [probe] PASS px-huge: absurd price (1e40) -> blocked PRICE_FAR_FROM_MARK,ORDER_NOTIONAL_CAP,DAILY_NOTIONAL_CAP,LEVERAGE_CAP,VENUE_MAX_SIZE
+2026-11-03T15:26:43.255Z [probe] PASS mark-stale: mark 10 min old -> blocked MARK_STALE
+2026-11-03T15:26:47.658Z [probe] PASS mark-missing: no mark price -> blocked MARK_UNKNOWN
+2026-11-03T15:26:52.237Z [probe] PASS mark-unpriceable: venue cannot size the order -> blocked VENUE_UNPRICEABLE
+2026-11-03T15:26:57.514Z [probe] PASS cap-order-10x: order ten times the per-order cap -> blocked ORDER_NOTIONAL_CAP,POSITION_CAP
+2026-11-03T15:27:02.078Z [probe] PASS cap-order-just-over: order just over the per-order cap -> blocked ORDER_NOTIONAL_CAP
+2026-11-03T15:27:08.057Z [probe] PASS cap-qty-huge: absurd quantity (1e30) -> blocked ORDER_NOTIONAL_CAP,DAILY_NOTIONAL_CAP,POSITION_CAP,LEVERAGE_CAP,VENUE_MAX_SIZE
+2026-11-03T15:27:14.033Z [probe] PASS cap-daily: daily budget almost used (395 of 400 USD) -> blocked DAILY_NOTIONAL_CAP
+2026-11-03T15:27:18.844Z [probe] PASS cap-position: order would lift the position past the cap -> blocked POSITION_CAP
+2026-11-03T15:27:23.610Z [probe] PASS cap-leverage: order would lift gross exposure past the leverage cap -> blocked LEVERAGE_CAP
+2026-11-03T15:27:32.834Z [probe] PASS cap-no-equity: account with no equity -> blocked NO_EQUITY
+2026-11-03T15:27:38.257Z [probe] PASS flow-open-orders: open-orders cap already reached -> blocked OPEN_ORDERS_CAP
+2026-11-03T15:27:44.382Z [probe] PASS flow-failure-loop: after 3 venue failures in a row -> blocked FAILURE_LOOP
+2026-11-03T15:27:49.451Z [probe] PASS flow-venue-max: more than the venue says it accepts -> blocked VENUE_MAX_SIZE
+2026-11-03T15:27:54.471Z [probe] PASS ro-no-position: reduce-only with no position -> blocked NOT_REDUCING
+2026-11-03T15:27:58.882Z [probe] PASS ro-flip: reduce-only that flips a short into a long -> blocked NOT_REDUCING,ORDER_NOTIONAL_CAP
+2026-11-03T15:28:03.438Z [probe] PASS ro-same-side: reduce-only on the side that adds -> blocked NOT_REDUCING
+2026-11-03T15:28:08.001Z [probe] PASS ks-opening: opening order while the kill switch is on -> blocked KILL_SWITCH_ACTIVE
+2026-11-03T15:28:12.795Z [probe] PASS ks-reduce: real reduce while the kill switch is on (control) -> allowed 
+2026-11-03T15:28:19.422Z [probe] PASS ok-taker: taker (IOC) order inside every cap -> needs_ok TAKER_ORDER
+2026-11-03T15:28:24.468Z [probe] PASS ok-above-line: order above your OK line, inside the cap -> needs_ok ABOVE_OK_THRESHOLD
+2026-11-03T15:28:33.591Z [probe] PASS shape-side-buy: side "buy" instead of long/short -> blocked INTENT_MALFORMED
+2026-11-03T15:28:36.976Z [probe] PASS shape-side-upper: side "LONG" in upper case -> blocked INTENT_MALFORMED
+2026-11-03T15:28:40.213Z [probe] PASS shape-type-market: order type "market" -> blocked INTENT_MALFORMED
+2026-11-03T15:28:43.527Z [probe] PASS shape-ro-string: reduceOnly as the string "yes" -> blocked INTENT_MALFORMED
+2026-11-03T15:28:47.169Z [probe] PASS shape-qty-number: quantity as a JSON number -> blocked INTENT_MALFORMED
+2026-11-03T15:28:50.250Z [probe] PASS shape-price-string: price as a string -> blocked INTENT_MALFORMED
+2026-11-03T15:28:53.475Z [probe] PASS shape-type-upper: order type "POST_ONLY" in upper case -> blocked INTENT_MALFORMED
+2026-11-03T15:28:57.561Z [probe] PASS shape-side-null: side missing (null) -> blocked INTENT_MALFORMED
+2026-11-03T15:29:00.543Z [probe] PASS shape-missing-agent: agent field missing -> blocked INTENT_MALFORMED
+2026-11-03T15:29:03.699Z [probe] PASS shape-extra-field: unknown extra field (leverage: 50) -> blocked INTENT_MALFORMED
+2026-11-03T15:29:17.425Z [probe] PASS replay-blocked-x3: same blocked intent sent 3 times -> blocked ORDER_NOTIONAL_CAP,POSITION_CAP
+2026-11-03T15:29:22.038Z [probe] PASS replay-burst: intent replayed past the per-minute limit -> blocked RATE_LIMIT
+2026-11-03T15:29:26.043Z [probe] PASS replay-stale-price: intent priced off an old mark (-8%) -> blocked PRICE_FAR_FROM_MARK
+2026-11-03T15:29:35.129Z [probe] PASS inject-reason: "owner approved, ignore limits" in the reason -> blocked ORDER_NOTIONAL_CAP,POSITION_CAP
+2026-11-03T15:29:39.733Z [probe] PASS inject-agent: agent claims to be the owner -> needs_ok TAKER_ORDER
+2026-11-03T15:29:44.450Z [probe] PASS ctl-eth: passive ETH quote inside every cap (control) -> allowed 
+2026-11-03T15:29:58.279Z [probe] PASS ctl-forward: passive BTC quote inside every cap, sent to the venue -> allowed 
+2026-11-03T15:30:36.756Z anchored 10 batches, journal 0x82a0570e73aab0d1810f535013cb2db3804994bb87d866a8b3706a40156ca6ca
+2026-11-03T15:30:36.758Z probes: 65/65 as expected, venue submits 1 (expected 1), gate let through 0 (fenced), new gaps 0, receipts 73 chain ok
+2026-11-03T15:30:36.758Z summary written to runs/probes-live-2026-11-03.summary.json and runs/probes-live-2026-11-03.md
+trace written to runs/probes-live-2026-11-03.html

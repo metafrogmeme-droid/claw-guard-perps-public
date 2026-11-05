@@ -1,0 +1,24 @@
+# gitleaks config: the default rules plus Claw Guard Perps rules. Self-tested by scripts/gitleaks-selftest.sh.
+title = "claw-guard-perps"
+
+[extend]
+useDefault = true
+
+# A 32-byte hex private key assigned to a *KEY / *SECRET name (.env style, JSON, YAML, TS).
+# Bare 0x+64 hex is NOT flagged on purpose: tx hashes and receipt hashes in docs/PROOF.md look the same.
+[[rules]]
+id = "cgp-hex-private-key-assignment"
+description = "Hex private key assigned to a key or secret name"
+regex = '''(?i)[A-Z0-9_]*(?:KEY|SECRET)["']?\s*[:=]\s*["']?(?:0x)?[0-9a-f]{64}\b'''
+keywords = ["key", "secret"]
+
+# A raw 64-hex value passed to privateKeyToAccount / new Wallet in code.
+[[rules]]
+id = "cgp-hex-key-in-code"
+description = "Hex private key literal passed to a key constructor"
+regex = '''(?i)(?:privateKeyToAccount|new\s+Wallet)\(\s*["'`](?:0x)?[0-9a-f]{64}["'`]'''
+keywords = ["privatekeytoaccount", "wallet"]
+
+[allowlist]
+description = "Well-known public test keys (anvil/hardhat accounts 0 and 1), used only in unit tests."
+regexes = ['''ac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80''', '''59c6995e998f97a5a0044966f0945389dc9e86dae88c7a8412f4603b6b78690d''']

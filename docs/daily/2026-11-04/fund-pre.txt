@@ -1,0 +1,6 @@
+
+> claw-guard-perps@0.1.0 cli /workspace/claw-guard-perps
+> tsx src/cli/main.ts fund --env /home/box/.config/claw-guard-perps/env
+
+gas 4.798892124 STT, margin equity 2000.243497902277267913 USDso
+voucher {"kind":"claimed"}

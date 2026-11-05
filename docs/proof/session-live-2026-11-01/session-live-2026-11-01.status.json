@@ -1,0 +1,33 @@
+{
+  "state": "running",
+  "cycles": 69,
+  "startedAt": 1793554340,
+  "deadline": 1793565140,
+  "now": 1793563862,
+  "counts": {
+    "allowed": 5,
+    "blocked": 12,
+    "needsOk": 1,
+    "ownerYes": 0,
+    "sent": 5,
+    "venueOk": 5,
+    "cancels": 0
+  },
+  "blockedCodes": {
+    "MARKET_NOT_ALLOWED": 2,
+    "QTY_OFF_LOT": 2,
+    "QTY_BELOW_MIN": 2,
+    "PRICE_FAR_FROM_MARK": 4,
+    "VENUE_MAX_SIZE": 4,
+    "DECIMALS_MISMATCH": 2,
+    "ORDER_NOTIONAL_CAP": 4,
+    "DAILY_NOTIONAL_CAP": 2,
+    "POSITION_CAP": 4,
+    "LEVERAGE_CAP": 2,
+    "NOT_REDUCING": 2,
+    "PRICE_OFF_TICK": 2
+  },
+  "startEquity": "1000.001008",
+  "equity": "997.853578818532527425",
+  "receipts": 23
+}

@@ -1,0 +1,22 @@
+2026-11-01T17:32:20.303Z [session] start equity 1000.001008 USDso, until 2026-11-01T20:32:20.000Z
+2026-11-01T17:33:02.269Z [session] cycle 1: allowed 4, blocked 0, needs your OK 0, equity 1000.001008
+2026-11-01T17:41:59.801Z [probe] market not on the allowlist: Blocked by your rule: MARKET_NOT_ALLOWED, QTY_OFF_LOT, QTY_BELOW_MIN, PRICE_FAR_FROM_MARK, VENUE_MAX_SIZE
+2026-11-01T17:53:09.055Z [probe] quantity written in 18 decimals instead of the market decimals: Blocked by your rule: DECIMALS_MISMATCH, ORDER_NOTIONAL_CAP, DAILY_NOTIONAL_CAP, POSITION_CAP, LEVERAGE_CAP, VENUE_MAX_SIZE
+2026-11-01T17:55:21.630Z [session] cycle 11: allowed 4, blocked 2, needs your OK 0, equity 997.8429248
+2026-11-01T18:04:18.008Z [probe] order ten times the per-order cap: Blocked by your rule: ORDER_NOTIONAL_CAP, POSITION_CAP
+2026-11-01T18:15:29.208Z [probe] limit price 10% away from the mark: Blocked by your rule: PRICE_FAR_FROM_MARK
+2026-11-01T18:17:42.110Z [session] cycle 21: allowed 4, blocked 4, needs your OK 0, equity 997.8429248
+2026-11-01T18:26:39.795Z [probe] claims reduce-only with no position: Blocked by your rule: NOT_REDUCING
+2026-11-01T18:37:48.198Z [probe] price off the tick grid: Blocked by your rule: PRICE_OFF_TICK
+2026-11-01T18:40:03.055Z [session] cycle 31: allowed 4, blocked 6, needs your OK 0, equity 997.8429248
+2026-11-01T18:49:02.468Z [probe] taker order inside every cap: Needs your OK: TAKER_ORDER (no owner answer, not sent)
+2026-11-01T19:06:14.125Z [probe] market not on the allowlist: Blocked by your rule: MARKET_NOT_ALLOWED, QTY_OFF_LOT, QTY_BELOW_MIN, PRICE_FAR_FROM_MARK, VENUE_MAX_SIZE
+2026-11-01T19:08:26.586Z [session] cycle 41: allowed 4, blocked 7, needs your OK 1, equity 997.8429248
+2026-11-01T19:17:32.722Z [probe] quantity written in 18 decimals instead of the market decimals: Blocked by your rule: DECIMALS_MISMATCH, ORDER_NOTIONAL_CAP, DAILY_NOTIONAL_CAP, POSITION_CAP, LEVERAGE_CAP, VENUE_MAX_SIZE
+2026-11-01T19:28:41.110Z [probe] order ten times the per-order cap: Blocked by your rule: ORDER_NOTIONAL_CAP, POSITION_CAP
+2026-11-01T19:30:54.133Z [session] cycle 51: allowed 5, blocked 9, needs your OK 1, equity 997.859217642029655425
+2026-11-01T19:39:51.029Z [probe] limit price 10% away from the mark: Blocked by your rule: PRICE_FAR_FROM_MARK
+2026-11-01T19:51:01.205Z [probe] claims reduce-only with no position: Blocked by your rule: NOT_REDUCING
+2026-11-01T19:53:14.219Z [session] cycle 61: allowed 5, blocked 11, needs your OK 1, equity 997.858104539045390625
+2026-11-01T20:02:10.700Z [probe] price off the tick grid: Blocked by your rule: PRICE_OFF_TICK
+2026-11-01T20:52:55.778Z [session] ending (time is up); flattening

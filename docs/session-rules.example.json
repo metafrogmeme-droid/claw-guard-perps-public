@@ -1,0 +1,18 @@
+{
+  "rpcGate": {
+    "slowReadSec": 20,
+    "backoffBaseSec": 5,
+    "backoffMaxSec": 60,
+    "maxOutageSec": 600,
+    "maxTotalOutageSec": 1200,
+    "healthyProbes": 2,
+    "cancelOnPause": true
+  },
+  "flatten": {
+    "retryBudgetSec": 600,
+    "backoffBaseSec": 5,
+    "backoffMaxSec": 60,
+    "passTimeoutSec": 180,
+    "maxRetries": 10
+  }
+}

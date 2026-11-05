@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Pre-commit: gitleaks on staged changes + copy-lint. Enabled by `pnpm install` (prepare sets core.hooksPath).
+set -euo pipefail
+ROOT="$(git rev-parse --show-toplevel)"
+cd "$ROOT"
+if ! command -v gitleaks >/dev/null 2>&1; then
+  echo "pre-commit: gitleaks is not installed, so the commit is blocked." >&2
+  exit 1
+fi
+gitleaks git --pre-commit --staged --no-banner --redact --log-level warn --config .gitleaks.toml .
+node scripts/copy-lint.mjs >/dev/null

@@ -1,0 +1,214 @@
+2026-11-01T17:32:20.325Z watching 0xeda7071961c518ce154062cb6d8e94219f8c29b3 for signer 0x39791a9Df0bb96EBaEEaE2C6754bB76EbD09C67D and MarginBank 0x478769e1177c0773c43a593dccc4ad15f15f1394 for account 0x3C9650bb62e913c33F662D6De2F4C0C5C617a898 over wss://api.hideki2.infra.testnet.somnia.network/ws (somnia_watch)
+2026-11-01T17:32:23.825Z [positions] subscribed to PositionUpdated for 0x3C9650bb62e913c33F662D6De2F4C0C5C617a898
+2026-11-01T17:32:24.754Z [watch] subscribed; isStopped(0x39791a9Df0bb96EBaEEaE2C6754bB76EbD09C67D) = false
+2026-11-01T17:36:52.042Z [watch] websocket error
+2026-11-01T17:36:52.042Z [watch] websocket closed; reconnecting in 1s
+2026-11-01T17:36:53.826Z [positions] websocket error
+2026-11-01T17:36:53.826Z [positions] websocket closed; reconnecting in 1s
+2026-11-01T17:36:56.595Z [positions] subscribed to PositionUpdated for 0x3C9650bb62e913c33F662D6De2F4C0C5C617a898
+2026-11-01T17:36:57.677Z [watch] subscribed; isStopped(0x39791a9Df0bb96EBaEEaE2C6754bB76EbD09C67D) = false
+2026-11-01T17:41:24.717Z [watch] websocket error
+2026-11-01T17:41:24.717Z [watch] websocket closed; reconnecting in 1s
+2026-11-01T17:41:26.596Z [positions] websocket error
+2026-11-01T17:41:26.597Z [positions] websocket closed; reconnecting in 1s
+2026-11-01T17:41:29.354Z [positions] subscribed to PositionUpdated for 0x3C9650bb62e913c33F662D6De2F4C0C5C617a898
+2026-11-01T17:41:30.157Z [watch] subscribed; isStopped(0x39791a9Df0bb96EBaEEaE2C6754bB76EbD09C67D) = false
+2026-11-01T17:45:57.389Z [watch] websocket error
+2026-11-01T17:45:57.389Z [watch] websocket closed; reconnecting in 1s
+2026-11-01T17:45:59.355Z [positions] websocket error
+2026-11-01T17:45:59.355Z [positions] websocket closed; reconnecting in 1s
+2026-11-01T17:46:02.344Z [positions] subscribed to PositionUpdated for 0x3C9650bb62e913c33F662D6De2F4C0C5C617a898
+2026-11-01T17:46:03.021Z [watch] subscribed; isStopped(0x39791a9Df0bb96EBaEEaE2C6754bB76EbD09C67D) = false
+2026-11-01T17:50:30.346Z [watch] websocket error
+2026-11-01T17:50:30.346Z [watch] websocket closed; reconnecting in 1s
+2026-11-01T17:50:32.345Z [positions] websocket error
+2026-11-01T17:50:32.346Z [positions] websocket closed; reconnecting in 1s
+2026-11-01T17:50:35.058Z [positions] subscribed to PositionUpdated for 0x3C9650bb62e913c33F662D6De2F4C0C5C617a898
+2026-11-01T17:50:35.873Z [watch] subscribed; isStopped(0x39791a9Df0bb96EBaEEaE2C6754bB76EbD09C67D) = false
+2026-11-01T17:55:02.922Z [watch] websocket error
+2026-11-01T17:55:02.922Z [watch] websocket closed; reconnecting in 1s
+2026-11-01T17:55:05.059Z [positions] websocket error
+2026-11-01T17:55:05.059Z [positions] websocket closed; reconnecting in 1s
+2026-11-01T17:55:07.654Z [positions] subscribed to PositionUpdated for 0x3C9650bb62e913c33F662D6De2F4C0C5C617a898
+2026-11-01T17:55:08.503Z [watch] subscribed; isStopped(0x39791a9Df0bb96EBaEEaE2C6754bB76EbD09C67D) = false
+2026-11-01T17:59:35.902Z [watch] websocket error
+2026-11-01T17:59:35.902Z [watch] websocket closed; reconnecting in 1s
+2026-11-01T17:59:37.655Z [positions] websocket error
+2026-11-01T17:59:37.655Z [positions] websocket closed; reconnecting in 1s
+2026-11-01T17:59:40.223Z [positions] subscribed to PositionUpdated for 0x3C9650bb62e913c33F662D6De2F4C0C5C617a898
+2026-11-01T17:59:41.111Z [watch] subscribed; isStopped(0x39791a9Df0bb96EBaEEaE2C6754bB76EbD09C67D) = false
+2026-11-01T18:04:08.521Z [watch] websocket error
+2026-11-01T18:04:08.521Z [watch] websocket closed; reconnecting in 1s
+2026-11-01T18:04:10.225Z [positions] websocket error
+2026-11-01T18:04:10.225Z [positions] websocket closed; reconnecting in 1s
+2026-11-01T18:04:13.104Z [positions] subscribed to PositionUpdated for 0x3C9650bb62e913c33F662D6De2F4C0C5C617a898
+2026-11-01T18:04:14.035Z [watch] subscribed; isStopped(0x39791a9Df0bb96EBaEEaE2C6754bB76EbD09C67D) = false
+2026-11-01T18:08:41.321Z [watch] websocket error
+2026-11-01T18:08:41.321Z [watch] websocket closed; reconnecting in 1s
+2026-11-01T18:08:43.106Z [positions] websocket error
+2026-11-01T18:08:43.106Z [positions] websocket closed; reconnecting in 1s
+2026-11-01T18:08:45.888Z [positions] subscribed to PositionUpdated for 0x3C9650bb62e913c33F662D6De2F4C0C5C617a898
+2026-11-01T18:08:46.418Z [watch] subscribed; isStopped(0x39791a9Df0bb96EBaEEaE2C6754bB76EbD09C67D) = false
+2026-11-01T18:13:13.920Z [watch] websocket error
+2026-11-01T18:13:13.920Z [watch] websocket closed; reconnecting in 1s
+2026-11-01T18:13:15.890Z [positions] websocket error
+2026-11-01T18:13:15.890Z [positions] websocket closed; reconnecting in 1s
+2026-11-01T18:13:18.921Z [positions] subscribed to PositionUpdated for 0x3C9650bb62e913c33F662D6De2F4C0C5C617a898
+2026-11-01T18:13:19.091Z [watch] subscribed; isStopped(0x39791a9Df0bb96EBaEEaE2C6754bB76EbD09C67D) = false
+2026-11-01T18:17:46.463Z [watch] websocket error
+2026-11-01T18:17:46.463Z [watch] websocket closed; reconnecting in 1s
+2026-11-01T18:17:48.922Z [positions] websocket error
+2026-11-01T18:17:48.923Z [positions] websocket closed; reconnecting in 1s
+2026-11-01T18:17:51.665Z [watch] subscribed; isStopped(0x39791a9Df0bb96EBaEEaE2C6754bB76EbD09C67D) = false
+2026-11-01T18:17:51.751Z [positions] subscribed to PositionUpdated for 0x3C9650bb62e913c33F662D6De2F4C0C5C617a898
+2026-11-01T18:22:19.148Z [watch] websocket error
+2026-11-01T18:22:19.148Z [watch] websocket closed; reconnecting in 1s
+2026-11-01T18:22:21.754Z [positions] websocket error
+2026-11-01T18:22:21.754Z [positions] websocket closed; reconnecting in 1s
+2026-11-01T18:22:24.345Z [positions] subscribed to PositionUpdated for 0x3C9650bb62e913c33F662D6De2F4C0C5C617a898
+2026-11-01T18:22:24.586Z [watch] subscribed; isStopped(0x39791a9Df0bb96EBaEEaE2C6754bB76EbD09C67D) = false
+2026-11-01T18:26:51.797Z [watch] websocket error
+2026-11-01T18:26:51.797Z [watch] websocket closed; reconnecting in 1s
+2026-11-01T18:26:54.347Z [positions] websocket error
+2026-11-01T18:26:54.347Z [positions] websocket closed; reconnecting in 1s
+2026-11-01T18:26:57.114Z [positions] subscribed to PositionUpdated for 0x3C9650bb62e913c33F662D6De2F4C0C5C617a898
+2026-11-01T18:26:57.208Z [watch] subscribed; isStopped(0x39791a9Df0bb96EBaEEaE2C6754bB76EbD09C67D) = false
+2026-11-01T18:31:24.500Z [watch] websocket error
+2026-11-01T18:31:24.500Z [watch] websocket closed; reconnecting in 1s
+2026-11-01T18:31:27.115Z [positions] websocket error
+2026-11-01T18:31:27.115Z [positions] websocket closed; reconnecting in 1s
+2026-11-01T18:31:29.774Z [positions] subscribed to PositionUpdated for 0x3C9650bb62e913c33F662D6De2F4C0C5C617a898
+2026-11-01T18:31:30.130Z [watch] subscribed; isStopped(0x39791a9Df0bb96EBaEEaE2C6754bB76EbD09C67D) = false
+2026-11-01T18:35:57.389Z [watch] websocket error
+2026-11-01T18:35:57.389Z [watch] websocket closed; reconnecting in 1s
+2026-11-01T18:35:59.775Z [positions] websocket error
+2026-11-01T18:35:59.776Z [positions] websocket closed; reconnecting in 1s
+2026-11-01T18:36:02.321Z [positions] subscribed to PositionUpdated for 0x3C9650bb62e913c33F662D6De2F4C0C5C617a898
+2026-11-01T18:36:02.670Z [watch] subscribed; isStopped(0x39791a9Df0bb96EBaEEaE2C6754bB76EbD09C67D) = false
+2026-11-01T18:40:30.159Z [watch] websocket error
+2026-11-01T18:40:30.159Z [watch] websocket closed; reconnecting in 1s
+2026-11-01T18:40:32.322Z [positions] websocket error
+2026-11-01T18:40:32.323Z [positions] websocket closed; reconnecting in 1s
+2026-11-01T18:40:35.146Z [positions] subscribed to PositionUpdated for 0x3C9650bb62e913c33F662D6De2F4C0C5C617a898
+2026-11-01T18:40:35.995Z [watch] subscribed; isStopped(0x39791a9Df0bb96EBaEEaE2C6754bB76EbD09C67D) = false
+2026-11-01T18:45:03.205Z [watch] websocket error
+2026-11-01T18:45:03.205Z [watch] websocket closed; reconnecting in 1s
+2026-11-01T18:45:05.148Z [positions] websocket error
+2026-11-01T18:45:05.148Z [positions] websocket closed; reconnecting in 1s
+2026-11-01T18:45:07.829Z [positions] subscribed to PositionUpdated for 0x3C9650bb62e913c33F662D6De2F4C0C5C617a898
+2026-11-01T18:45:08.691Z [watch] subscribed; isStopped(0x39791a9Df0bb96EBaEEaE2C6754bB76EbD09C67D) = false
+2026-11-01T18:49:36.033Z [watch] websocket error
+2026-11-01T18:49:36.034Z [watch] websocket closed; reconnecting in 1s
+2026-11-01T18:49:37.830Z [positions] websocket error
+2026-11-01T18:49:37.830Z [positions] websocket closed; reconnecting in 1s
+2026-11-01T18:49:40.426Z [positions] subscribed to PositionUpdated for 0x3C9650bb62e913c33F662D6De2F4C0C5C617a898
+2026-11-01T18:49:41.870Z [watch] subscribed; isStopped(0x39791a9Df0bb96EBaEEaE2C6754bB76EbD09C67D) = false
+2026-11-01T18:54:09.049Z [watch] websocket error
+2026-11-01T18:54:09.049Z [watch] websocket closed; reconnecting in 1s
+2026-11-01T18:54:10.428Z [positions] websocket error
+2026-11-01T18:54:10.428Z [positions] websocket closed; reconnecting in 1s
+2026-11-01T18:54:13.319Z [positions] subscribed to PositionUpdated for 0x3C9650bb62e913c33F662D6De2F4C0C5C617a898
+2026-11-01T18:54:14.277Z [watch] subscribed; isStopped(0x39791a9Df0bb96EBaEEaE2C6754bB76EbD09C67D) = false
+2026-11-01T18:59:14.349Z [positions] websocket error
+2026-11-01T18:59:14.349Z [positions] websocket closed; reconnecting in 1s
+2026-11-01T18:59:14.350Z [watch] websocket error
+2026-11-01T18:59:14.350Z [watch] websocket closed; reconnecting in 1s
+2026-11-01T18:59:16.960Z [positions] subscribed to PositionUpdated for 0x3C9650bb62e913c33F662D6De2F4C0C5C617a898
+2026-11-01T18:59:19.674Z [watch] subscribed; isStopped(0x39791a9Df0bb96EBaEEaE2C6754bB76EbD09C67D) = false
+2026-11-01T19:04:53.171Z [positions] websocket error
+2026-11-01T19:04:53.171Z [positions] websocket closed; reconnecting in 1s
+2026-11-01T19:04:53.343Z [watch] websocket error
+2026-11-01T19:04:53.344Z [watch] websocket closed; reconnecting in 1s
+2026-11-01T19:04:55.944Z [positions] subscribed to PositionUpdated for 0x3C9650bb62e913c33F662D6De2F4C0C5C617a898
+2026-11-01T19:04:59.239Z [watch] subscribed; isStopped(0x39791a9Df0bb96EBaEEaE2C6754bB76EbD09C67D) = false
+2026-11-01T19:09:25.944Z [positions] websocket error
+2026-11-01T19:09:25.944Z [positions] websocket closed; reconnecting in 1s
+2026-11-01T19:09:26.035Z [watch] websocket error
+2026-11-01T19:09:26.035Z [watch] websocket closed; reconnecting in 1s
+2026-11-01T19:09:28.679Z [positions] subscribed to PositionUpdated for 0x3C9650bb62e913c33F662D6De2F4C0C5C617a898
+2026-11-01T19:09:31.237Z [watch] subscribed; isStopped(0x39791a9Df0bb96EBaEEaE2C6754bB76EbD09C67D) = false
+2026-11-01T19:09:34.369Z [push] PositionUpdated pool 0xD6Cb1DD58580B84D76068aC21594219ce03aeddf size 4700000000000000 realizedPnl 0 | Allowed: within your limits (ETH-PERP 10.65 USD)
+2026-11-01T19:13:58.687Z [watch] websocket error
+2026-11-01T19:13:58.687Z [watch] websocket closed; reconnecting in 1s
+2026-11-01T19:14:04.092Z [watch] subscribed; isStopped(0x39791a9Df0bb96EBaEEaE2C6754bB76EbD09C67D) = false
+2026-11-01T19:14:04.366Z [positions] websocket error
+2026-11-01T19:14:04.366Z [positions] websocket closed; reconnecting in 1s
+2026-11-01T19:14:06.145Z [positions] subscribed to PositionUpdated for 0x3C9650bb62e913c33F662D6De2F4C0C5C617a898
+2026-11-01T19:18:31.500Z [watch] websocket error
+2026-11-01T19:18:31.500Z [watch] websocket closed; reconnecting in 1s
+2026-11-01T19:18:36.147Z [positions] websocket error
+2026-11-01T19:18:36.147Z [positions] websocket closed; reconnecting in 1s
+2026-11-01T19:18:37.095Z [watch] subscribed; isStopped(0x39791a9Df0bb96EBaEEaE2C6754bB76EbD09C67D) = false
+2026-11-01T19:18:37.899Z [positions] subscribed to PositionUpdated for 0x3C9650bb62e913c33F662D6De2F4C0C5C617a898
+2026-11-01T19:23:04.253Z [watch] websocket error
+2026-11-01T19:23:04.253Z [watch] websocket closed; reconnecting in 1s
+2026-11-01T19:23:07.901Z [positions] websocket error
+2026-11-01T19:23:07.901Z [positions] websocket closed; reconnecting in 1s
+2026-11-01T19:23:09.530Z [watch] subscribed; isStopped(0x39791a9Df0bb96EBaEEaE2C6754bB76EbD09C67D) = false
+2026-11-01T19:23:09.720Z [positions] subscribed to PositionUpdated for 0x3C9650bb62e913c33F662D6De2F4C0C5C617a898
+2026-11-01T19:27:36.866Z [watch] websocket error
+2026-11-01T19:27:36.867Z [watch] websocket closed; reconnecting in 1s
+2026-11-01T19:27:39.721Z [positions] websocket error
+2026-11-01T19:27:39.721Z [positions] websocket closed; reconnecting in 1s
+2026-11-01T19:27:42.088Z [watch] subscribed; isStopped(0x39791a9Df0bb96EBaEEaE2C6754bB76EbD09C67D) = false
+2026-11-01T19:27:42.433Z [positions] subscribed to PositionUpdated for 0x3C9650bb62e913c33F662D6De2F4C0C5C617a898
+2026-11-01T19:32:09.594Z [watch] websocket error
+2026-11-01T19:32:09.595Z [watch] websocket closed; reconnecting in 1s
+2026-11-01T19:32:12.434Z [positions] websocket error
+2026-11-01T19:32:12.435Z [positions] websocket closed; reconnecting in 1s
+2026-11-01T19:32:14.947Z [watch] subscribed; isStopped(0x39791a9Df0bb96EBaEEaE2C6754bB76EbD09C67D) = false
+2026-11-01T19:32:15.215Z [positions] subscribed to PositionUpdated for 0x3C9650bb62e913c33F662D6De2F4C0C5C617a898
+2026-11-01T19:36:42.367Z [watch] websocket error
+2026-11-01T19:36:42.367Z [watch] websocket closed; reconnecting in 1s
+2026-11-01T19:36:45.216Z [positions] websocket error
+2026-11-01T19:36:45.216Z [positions] websocket closed; reconnecting in 1s
+2026-11-01T19:36:47.896Z [positions] subscribed to PositionUpdated for 0x3C9650bb62e913c33F662D6De2F4C0C5C617a898
+2026-11-01T19:36:48.023Z [watch] subscribed; isStopped(0x39791a9Df0bb96EBaEEaE2C6754bB76EbD09C67D) = false
+2026-11-01T19:41:15.231Z [watch] websocket error
+2026-11-01T19:41:15.231Z [watch] websocket closed; reconnecting in 1s
+2026-11-01T19:41:17.897Z [positions] websocket error
+2026-11-01T19:41:17.897Z [positions] websocket closed; reconnecting in 1s
+2026-11-01T19:41:20.691Z [watch] subscribed; isStopped(0x39791a9Df0bb96EBaEEaE2C6754bB76EbD09C67D) = false
+2026-11-01T19:41:20.795Z [positions] subscribed to PositionUpdated for 0x3C9650bb62e913c33F662D6De2F4C0C5C617a898
+2026-11-01T19:45:47.969Z [watch] websocket error
+2026-11-01T19:45:47.969Z [watch] websocket closed; reconnecting in 1s
+2026-11-01T19:45:50.798Z [positions] websocket error
+2026-11-01T19:45:50.798Z [positions] websocket closed; reconnecting in 1s
+2026-11-01T19:45:53.224Z [watch] subscribed; isStopped(0x39791a9Df0bb96EBaEEaE2C6754bB76EbD09C67D) = false
+2026-11-01T19:45:53.571Z [positions] subscribed to PositionUpdated for 0x3C9650bb62e913c33F662D6De2F4C0C5C617a898
+2026-11-01T19:50:20.742Z [watch] websocket error
+2026-11-01T19:50:20.743Z [watch] websocket closed; reconnecting in 1s
+2026-11-01T19:50:23.571Z [positions] websocket error
+2026-11-01T19:50:23.571Z [positions] websocket closed; reconnecting in 1s
+2026-11-01T19:50:26.151Z [positions] subscribed to PositionUpdated for 0x3C9650bb62e913c33F662D6De2F4C0C5C617a898
+2026-11-01T19:50:26.165Z [watch] subscribed; isStopped(0x39791a9Df0bb96EBaEEaE2C6754bB76EbD09C67D) = false
+2026-11-01T19:54:53.437Z [watch] websocket error
+2026-11-01T19:54:53.438Z [watch] websocket closed; reconnecting in 1s
+2026-11-01T19:54:56.152Z [positions] websocket error
+2026-11-01T19:54:56.153Z [positions] websocket closed; reconnecting in 1s
+2026-11-01T19:54:58.843Z [positions] subscribed to PositionUpdated for 0x3C9650bb62e913c33F662D6De2F4C0C5C617a898
+2026-11-01T19:54:58.864Z [watch] subscribed; isStopped(0x39791a9Df0bb96EBaEEaE2C6754bB76EbD09C67D) = false
+2026-11-01T19:59:26.199Z [watch] websocket error
+2026-11-01T19:59:26.199Z [watch] websocket closed; reconnecting in 1s
+2026-11-01T19:59:28.846Z [positions] websocket error
+2026-11-01T19:59:28.846Z [positions] websocket closed; reconnecting in 1s
+2026-11-01T19:59:31.553Z [positions] subscribed to PositionUpdated for 0x3C9650bb62e913c33F662D6De2F4C0C5C617a898
+2026-11-01T19:59:31.855Z [watch] subscribed; isStopped(0x39791a9Df0bb96EBaEEaE2C6754bB76EbD09C67D) = false
+2026-11-01T20:03:58.941Z [watch] websocket error
+2026-11-01T20:03:58.941Z [watch] websocket closed; reconnecting in 1s
+2026-11-01T20:04:01.556Z [positions] websocket error
+2026-11-01T20:04:01.556Z [positions] websocket closed; reconnecting in 1s
+2026-11-01T20:04:04.088Z [positions] subscribed to PositionUpdated for 0x3C9650bb62e913c33F662D6De2F4C0C5C617a898
+2026-11-01T20:04:04.166Z [watch] subscribed; isStopped(0x39791a9Df0bb96EBaEEaE2C6754bB76EbD09C67D) = false
+2026-11-01T20:08:31.779Z [watch] websocket error
+2026-11-01T20:08:31.779Z [watch] websocket closed; reconnecting in 1s
+2026-11-01T20:08:34.089Z [positions] websocket error
+2026-11-01T20:08:34.089Z [positions] websocket closed; reconnecting in 1s
+2026-11-01T20:08:36.818Z [positions] subscribed to PositionUpdated for 0x3C9650bb62e913c33F662D6De2F4C0C5C617a898
+2026-11-01T20:08:37.687Z [watch] subscribed; isStopped(0x39791a9Df0bb96EBaEEaE2C6754bB76EbD09C67D) = false
+2026-11-01T20:52:43.676Z [watch] websocket error
+2026-11-01T20:52:43.678Z [watch] websocket closed; reconnecting in 1s
+2026-11-01T20:52:43.678Z [positions] websocket error
+2026-11-01T20:52:43.678Z [positions] websocket closed; reconnecting in 1s
+2026-11-01T20:52:46.844Z [positions] subscribed to PositionUpdated for 0x3C9650bb62e913c33F662D6De2F4C0C5C617a898
+2026-11-01T20:52:49.123Z [watch] subscribed; isStopped(0x39791a9Df0bb96EBaEEaE2C6754bB76EbD09C67D) = false
