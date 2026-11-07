@@ -51,7 +51,7 @@ describe('rest + on-chain stop (Reactivity demo, simulated)', () => {
       contract: '0xeda7071961c518ce154062cb6d8e94219f8c29b3',
       signer: signer.address,
       readStopped: () => Promise.resolve(false),
-      onStop: () => engine.kill('on-chain stop'),
+      onStop: () => engine.kill('on-chain stop').then(() => undefined),
     });
     await w.start();
     w.push({

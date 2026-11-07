@@ -17,7 +17,8 @@
 //                        [--stall S] watchdog closes out after S s without loop progress (default 900, 0 = off)
 //                        writes <out>.summary.json and a machine report <out>.report.md
 //   report <summary.json> [--out f.md]  render the machine session report from a saved summary
-//   kill [--reason r]    trip the kill switch now: cancel resting orders, reduce positions (live)
+//   kill [--reason r]    trip the kill switch now: cancel resting orders, reduce positions (live).
+//                        Exit 2 when a fresh read does not confirm the account is flat.
 //   stop [--reason r]    remote stop: anchor a signed kill-switch receipt on-chain (no venue access)
 //   rearm <stop-journal> anchor a re-arm receipt on the same journal
 //   probes --dry | --live  the probe matrix (docs/PROBES.md): 65 wrong orders through the real gate, a fence
@@ -61,7 +62,7 @@ import { DEFAULT_STRATEGY_RULES, parseStrategyRules } from '../engine/strategy-r
 import { hardBackstop } from '../runtime/watchdog.js';
 import { timedVenue, withTimeout } from '../runtime/timeout.js';
 import { loadEnv, ownerFrom, privateKeyFrom } from './env.js';
-import { killStopLine, stoppedMessage } from './stop.js';
+import { killAccountLine, killStopLine, stoppedMessage } from './stop.js';
 
 const { values, positionals } = parseArgs({
   allowPositionals: true,
@@ -386,13 +387,29 @@ async function main(): Promise<void> {
           policyHash(policy),
         );
         const e = new Engine({ venue: v, policy, journal, now: nowSec });
-        await e.kill(values.reason ?? 'operator');
-        const s = await e.snapshot();
-        log(
-          `kill switch on. open orders ${String(s.orders.length)}, positions ${String(Object.keys(s.account.positions).length)}`,
-        );
+        const outcome = await e.kill(values.reason ?? 'operator');
+        let flat = false;
+        try {
+          const s = await e.snapshot();
+          flat = s.orders.length === 0 && Object.values(s.account.positions).every((p) => p === 0n);
+          log(killAccountLine(s.orders.length, Object.keys(s.account.positions).length, flat));
+          if (!flat) {
+            for (const sk of outcome.plan.skipped)
+              log(`NOT flat: ${sk.market} position ${sk.position.toString()}: ${sk.why}`);
+            for (const p of outcome.problems) log(`NOT flat: ${p}`);
+            if (outcome.plan.skipped.length === 0 && outcome.problems.length === 0)
+              log('NOT flat: orders or positions remain after the reduce');
+            process.exitCode = 2;
+          }
+        } catch (err) {
+          flat = false;
+          process.exitCode = 2;
+          log(
+            `NOT flat: could not read the account to confirm it is flat (${err instanceof Error ? err.message : String(err)})`,
+          );
+        }
         const st = await onChainStop();
-        log(killStopLine(st.stopped));
+        log(killStopLine(st.stopped, flat));
       } finally {
         await v.close();
       }

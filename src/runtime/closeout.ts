@@ -2,9 +2,11 @@
 // flat. Every call is time-bounded, it retries a few times inside a total budget, and it never throws: the
 // caller gets a result saying flat or NOT flat plus the errors, writes the report, and exits non-zero when
 // the account is not flat. Running it on a flat account sends nothing and journals nothing (idempotent).
+// A residual the pool cannot reduce without exceeding the position is reported and not retried: another pass
+// would send nothing, and rounding the size up would flip the position.
 import { z } from 'zod';
 
-import type { Engine } from '../engine/engine.js';
+import type { Engine, FlattenOutcome } from '../engine/engine.js';
 import type { VenueSnapshot } from '../venue/types.js';
 import { withTimeout } from './timeout.js';
 
@@ -74,6 +76,31 @@ const isFlat = (s: VenueSnapshot): boolean =>
 
 const msg = (e: unknown): string => (e instanceof Error ? e.message : String(e));
 
+/**
+ * Record guard/venue problems. Returns true when the pass had nothing to cancel or reduce and every skip
+ * is terminal, so further passes cannot close the account.
+ */
+function noteFlatten(
+  result: unknown,
+  label: string,
+  errors: string[],
+  log?: (line: string) => void,
+): boolean {
+  if (result === null || typeof result !== 'object') return false;
+  const outcome = result as Partial<FlattenOutcome>;
+  if (Array.isArray(outcome.problems)) {
+    for (const p of outcome.problems) if (typeof p === 'string') errors.push(`${label}: ${p}`);
+  }
+  const plan = outcome.plan;
+  if (plan === undefined) return false;
+  for (const s of plan.skipped)
+    errors.push(`${label}: ${s.market} position ${s.position.toString()}: ${s.why}`);
+  if (plan.cancels.length > 0 || plan.reduces.length > 0) return false;
+  if (plan.skipped.length === 0 || plan.skipped.some((s) => !s.terminal)) return false;
+  log?.(`[close-out] ${label}: residual cannot be closed by a reduce-only order; not retrying`);
+  return true;
+}
+
 export async function closeOut(engine: Engine, o: CloseOutOptions): Promise<CloseOutResult> {
   const started = Date.now();
   const left = (): number => o.budgetMs - (Date.now() - started);
@@ -90,6 +117,7 @@ export async function closeOut(engine: Engine, o: CloseOutOptions): Promise<Clos
   let attempts = 0;
   let passes = 0;
   let failures = 0;
+  let blocked = false;
   while (attempts < o.attempts && left() > 0) {
     attempts += 1;
     try {
@@ -104,8 +132,15 @@ export async function closeOut(engine: Engine, o: CloseOutOptions): Promise<Clos
       );
       const why = `${o.reason} (close-out ${String(attempts)})`;
       // reduce-only flatten; after a guard trip / manual kill keep the stop, otherwise never trip it
-      await flattenStep(o.stop === true ? engine.kill(why) : engine.abort(why), 'close-out flatten');
+      const result = await flattenStep(
+        o.stop === true ? engine.kill(why) : engine.abort(why),
+        'close-out flatten',
+      );
       failures = 0;
+      if (noteFlatten(result, `attempt ${String(attempts)}`, errors, o.log)) {
+        blocked = true;
+        break;
+      }
     } catch (e) {
       failures += 1;
       errors.push(`attempt ${String(attempts)}: ${msg(e)}`);
@@ -118,7 +153,7 @@ export async function closeOut(engine: Engine, o: CloseOutOptions): Promise<Clos
   // retry phase: its own, longer budget with backoff, so one slow pass never ends the session NOT flat
   let retries = 0;
   const rc = o.retry;
-  if (!flat && rc?.enabled === true) {
+  if (!flat && !blocked && rc?.enabled === true) {
     const rStart = Date.now();
     const rLeft = (): number => rc.retryBudgetSec * 1000 - (Date.now() - rStart);
     const pass = <T>(p: Promise<T>, label: string): Promise<T> =>
@@ -142,7 +177,11 @@ export async function closeOut(engine: Engine, o: CloseOutOptions): Promise<Clos
           `[close-out] retry ${String(retries)}: ${String(last.orders.length)} open orders, ${String(Object.keys(last.account.positions).length)} positions; cancelling and closing reduce-only`,
         );
         const why = `${o.reason} (close-out retry ${String(retries)})`;
-        await pass(o.stop === true ? engine.kill(why) : engine.abort(why), 'close-out retry flatten');
+        const result = await pass(
+          o.stop === true ? engine.kill(why) : engine.abort(why),
+          'close-out retry flatten',
+        );
+        if (noteFlatten(result, `retry ${String(retries)}`, errors, o.log)) break;
       } catch (e) {
         errors.push(`retry ${String(retries)}: ${msg(e)}`);
         o.log?.(`[close-out] retry ${String(retries)} failed: ${msg(e)}`);

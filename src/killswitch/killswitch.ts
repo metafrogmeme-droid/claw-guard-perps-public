@@ -1,9 +1,10 @@
 // Kill switch: track peak equity, trip on drawdown, then cancel every resting order and reduce every
 // position. Pure functions: the runner feeds equity readings in and executes the plan it gets back.
 // Reduce orders still go through the gate, which lets a verified reduce pass while the switch is on.
+import { isReducing } from '../gate/gate.js';
 import type { Policy } from '../gate/policy.js';
 import type { MarketSpec, OrderIntent } from '../gate/types.js';
-import { deviationBps, floorToGrid } from '../gate/units.js';
+import { deviationBps, floorToGrid, notional } from '../gate/units.js';
 
 export interface KillSwitchState {
   /** Highest equity seen since the last reset, raw USDso (18 dp). */
@@ -62,11 +63,52 @@ export interface RestingOrder {
   readonly orderId: bigint;
 }
 
+export interface FlattenSkip {
+  readonly market: string;
+  readonly position: bigint;
+  readonly why: string;
+  /**
+   * True when another pass cannot place a reducing order until the position or the market spec changes.
+   * A missing mark is not terminal: the next read may price it.
+   */
+  readonly terminal: boolean;
+}
+
 export interface FlattenPlan {
   readonly cancels: readonly RestingOrder[];
   readonly reduces: readonly OrderIntent[];
-  /** Positions that cannot be reduced by an order (dust below minQuantity, or no mark). */
-  readonly skipped: readonly { readonly market: string; readonly position: bigint; readonly why: string }[];
+  /** Positions that were not given a reducing order, with the reason. */
+  readonly skipped: readonly FlattenSkip[];
+}
+
+const abs = (v: bigint): bigint => (v < 0n ? -v : v);
+
+/**
+ * Largest quantity the pool will accept that does not exceed the position.
+ * dreamDEX `placeOrder` has no reduce-only clamp: a size above the position flips it, and a size below
+ * `minQuantity` or off `lotSize` reverts (`QuantityBelowMinimum`, `InvalidQuantity`). Rounding up is refused.
+ */
+export function reducibleQuantity(position: bigint, market: MarketSpec): bigint | undefined {
+  const held = abs(position);
+  if (held === 0n || market.lotSize <= 0n || market.minQuantity <= 0n) return undefined;
+  const qty = floorToGrid(held, market.lotSize);
+  if (qty === 0n || qty < market.minQuantity || qty > held) return undefined;
+  return qty;
+}
+
+function skip(market: string, position: bigint, why: string, terminal: boolean): FlattenSkip {
+  return { market, position, why, terminal };
+}
+
+function cannotReduceWhy(position: bigint, market: MarketSpec): string {
+  const held = abs(position);
+  const floored = market.lotSize > 0n ? floorToGrid(held, market.lotSize) : 0n;
+  return (
+    `no reduce-only order can close it: abs ${held.toString()}, lotSize ${market.lotSize.toString()}, ` +
+    `minQuantity ${market.minQuantity.toString()}, largest on-lot size that does not exceed the position is ${floored.toString()}. ` +
+    `The pool rejects QuantityBelowMinimum and InvalidQuantity, and a regular order has no reduce-only clamp, ` +
+    `so rounding the size up to the minimum would flip the position and increase exposure. Not sent. The account is not flat.`
+  );
 }
 
 /**
@@ -97,37 +139,95 @@ export function planFlatten(
   agent = 'kill-switch',
 ): FlattenPlan {
   const reduces: OrderIntent[] = [];
-  const skipped: { market: string; position: bigint; why: string }[] = [];
-  if (policy.killSwitch.flattenPositions) {
-    for (const [name, pos] of Object.entries(positions).sort(([a], [b]) => a.localeCompare(b))) {
-      if (pos === 0n) continue;
-      const m = markets[name];
-      if (m === undefined || m.markPrice <= 0n) {
-        skipped.push({ market: name, position: pos, why: 'no mark price to price the exit' });
-        continue;
-      }
-      const qty = floorToGrid(pos < 0n ? -pos : pos, m.lotSize);
-      if (qty < m.minQuantity || qty === 0n) {
-        skipped.push({ market: name, position: pos, why: 'below the venue minimum order size' });
-        continue;
-      }
-      const sell = pos > 0n;
-      const price = exitPrice(m.markPrice, m.tickSize, sell, exitBandBps(policy));
-      if (deviationBps(price, m.markPrice) > BigInt(policy.maxPriceDeviationBps)) {
-        skipped.push({ market: name, position: pos, why: 'tick is too coarse for the price band' });
-        continue;
-      }
-      reduces.push({
-        market: name,
-        side: sell ? 'short' : 'long',
-        orderType: 'ioc',
-        price,
-        quantity: qty,
-        reduceOnly: true,
-        agent,
-        reason: 'kill switch: reduce position',
-      });
+  const skipped: FlattenSkip[] = [];
+  for (const [name, pos] of Object.entries(positions).sort(([a], [b]) => a.localeCompare(b))) {
+    if (pos === 0n) continue;
+    if (!policy.killSwitch.flattenPositions) {
+      skipped.push(
+        skip(
+          name,
+          pos,
+          'policy killSwitch.flattenPositions is off, so no reduce is sent. The account is not flat.',
+          true,
+        ),
+      );
+      continue;
     }
+    const m = markets[name];
+    if (m === undefined || m.markPrice <= 0n) {
+      skipped.push(
+        skip(
+          name,
+          pos,
+          'no mark price to price the exit. Not sent. The account is not flat until a priced reduce fills or the position reads as zero.',
+          false,
+        ),
+      );
+      continue;
+    }
+    if (m.lotSize <= 0n || m.tickSize <= 0n || m.minQuantity <= 0n) {
+      skipped.push(
+        skip(
+          name,
+          pos,
+          'market spec cannot size an order (lot, tick, or minQuantity is not positive). Not sent. The account is not flat.',
+          true,
+        ),
+      );
+      continue;
+    }
+    const qty = reducibleQuantity(pos, m);
+    if (qty === undefined) {
+      skipped.push(skip(name, pos, cannotReduceWhy(pos, m), true));
+      continue;
+    }
+    const sell = pos > 0n;
+    const price = exitPrice(m.markPrice, m.tickSize, sell, exitBandBps(policy));
+    if (price <= 0n) {
+      skipped.push(skip(name, pos, 'exit price rounded to zero. Not sent. The account is not flat.', true));
+      continue;
+    }
+    if (deviationBps(price, m.markPrice) > BigInt(policy.maxPriceDeviationBps)) {
+      skipped.push(
+        skip(
+          name,
+          pos,
+          'tick is too coarse for the price band, so no exit price stays inside the guard limit. Not sent. The account is not flat.',
+          true,
+        ),
+      );
+      continue;
+    }
+    if (notional(price, qty, m.baseDecimals) <= 0n) {
+      skipped.push(
+        skip(
+          name,
+          pos,
+          `reduce of ${qty.toString()} at ${price.toString()} has quote value 0, which the pool rejects as ZeroQuoteFillsAllowed. ` +
+            'A larger size would exceed the position and flip it, because a regular order has no reduce-only clamp. Not sent. The account is not flat.',
+          true,
+        ),
+      );
+      continue;
+    }
+    const intent: OrderIntent = {
+      market: name,
+      side: sell ? 'short' : 'long',
+      orderType: 'ioc',
+      price,
+      quantity: qty,
+      reduceOnly: true,
+      agent,
+      reason: 'kill switch: reduce position',
+    };
+    // The gate is the only reduce-only check. An order it would reject as NOT_REDUCING is not sent.
+    if (!isReducing(pos, intent)) {
+      skipped.push(
+        skip(name, pos, 'order would not shrink the position. Not sent. The account is not flat.', true),
+      );
+      continue;
+    }
+    reduces.push(intent);
   }
   return { cancels: [...orders], reduces, skipped };
 }

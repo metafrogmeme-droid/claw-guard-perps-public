@@ -52,6 +52,12 @@ retry ran and the run ended NOT flat; the make-up run timed out after 81 s with 
   runs one more cancel-all + reduce-only pass bounded by `passTimeoutSec` (never beyond the budget left).
 - It stops as soon as a read confirms flat, after `maxRetries`, or when the budget is spent; then the normal
   final check and report run (exit 2 and `pnpm cli kill` advice when still NOT flat).
+- It also stops without the retry phase when every remaining position has no reduce-only order the pool can
+  accept without exceeding that position (below `minQuantity`, on-lot size still below the minimum, or a zero
+  quote value, `ZeroQuoteFillsAllowed`). Another pass would send nothing. The size is not rounded up:
+  dreamDEX regular orders have no reduce-only clamp, so a larger order would flip the position and increase
+  exposure. The close-out reports that reason and stays NOT flat. A missing mark is retried; a failed read
+  is not treated as flat.
 - The retry path keeps the same kind as the first pass: `session_aborted` after an infra / time stop (never an
   on-chain stop), the kill switch only after a real guard trip.
 - The CLI hard backstop includes `retryBudgetSec + passTimeoutSec`, so the process is not killed mid-retry.

@@ -31,6 +31,11 @@ export interface SimOptions {
   readonly seed?: number;
   /** Seconds after which a mark counts as stale for sizing (the pool's own staleness). */
   readonly markMaxAgeSec?: number;
+  /**
+   * Cap on how much of a crossing IOC fills. The rest is cancelled, as an IOC does. Tests use this for a
+   * partial close. Unset means the whole crossing quantity fills.
+   */
+  readonly maxIocFill?: bigint;
 }
 
 const SIM_ACCOUNT = '0x00000000000000000000000000000000005e1a7e';
@@ -64,6 +69,13 @@ export class SimVenue implements Venue {
     const m = this.markets.get(name);
     if (m === undefined) throw new Error(`sim: unknown market ${name}`);
     return m;
+  }
+
+  /** Install a signed position the account already holds. Zero clears it. No order is sent. */
+  setPosition(market: string, size: bigint): void {
+    const m = this.market(market);
+    if (size === 0n) this.positions.delete(market);
+    else this.positions.set(market, { size, entry: m.markPrice });
   }
 
   /** Move a mark and fill any resting order it crosses. */
@@ -182,8 +194,12 @@ export class SimVenue implements Venue {
     const txHash = this.tx();
     const id = this.nextId++;
     if (crosses) {
-      this.fill(m.market, id, isBid, m.markPrice, intent.quantity);
-      return Promise.resolve({ ok: true, txHash, filled: intent.quantity });
+      let qty = intent.quantity;
+      if (intent.orderType === 'ioc' && this.opts.maxIocFill !== undefined && qty > this.opts.maxIocFill)
+        qty = this.opts.maxIocFill;
+      if (qty <= 0n) return Promise.resolve(this.reject('ImmediateOrCancelNoFill', true));
+      this.fill(m.market, id, isBid, m.markPrice, qty);
+      return Promise.resolve({ ok: true, txHash, filled: qty });
     }
     this.orders.set(id, { id, market: m.market, isBid, price: intent.price, remaining: intent.quantity });
     return Promise.resolve({ ok: true, txHash, orderId: id, filled: 0n });
