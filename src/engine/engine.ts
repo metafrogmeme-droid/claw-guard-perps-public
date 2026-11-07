@@ -13,6 +13,7 @@ import {
   planFlatten,
   reset,
   tripManually,
+  type FlattenPlan,
   type KillSwitchState,
   type RestingOrder,
 } from '../killswitch/killswitch.js';
@@ -29,6 +30,13 @@ export interface EngineOptions {
   readonly journal: Journal;
   readonly now: () => number;
   readonly approve?: Approver;
+}
+
+/** What one flatten pass planned and what happened to each reduce. Cancels are receipted on their own. */
+export interface FlattenOutcome {
+  readonly plan: FlattenPlan;
+  /** Guard blocks, venue rejections, and partial fills. Empty when every reduce filled in full. */
+  readonly problems: readonly string[];
 }
 
 export interface SubmitResult {
@@ -200,17 +208,17 @@ export class Engine {
   }
 
   /** Operator stop: trip now, cancel everything, reduce positions. */
-  async kill(reason: string): Promise<void> {
+  async kill(reason: string): Promise<FlattenOutcome> {
     this.killSwitch = tripManually(this.killSwitch, this.ts(), reason);
-    await this.flatten(this.killSwitch.reason ?? reason);
+    return this.flatten(this.killSwitch.reason ?? reason);
   }
 
   /**
    * Infra / error / end-of-session close-out: cancel everything and reduce positions WITHOUT tripping the kill
    * switch. Journals a session_aborted receipt, which does not set the on-chain stop.
    */
-  async abort(reason: string): Promise<void> {
-    await this.flatten(reason, 'session_aborted');
+  async abort(reason: string): Promise<FlattenOutcome> {
+    return this.flatten(reason, 'session_aborted');
   }
 
   /** Operator re-arm from the current equity. */
@@ -224,7 +232,7 @@ export class Engine {
   private async flatten(
     reason: string,
     kind: 'kill_switch' | 'session_aborted' = 'kill_switch',
-  ): Promise<void> {
+  ): Promise<FlattenOutcome> {
     const snap = await this.snapshot();
     const plan = planFlatten(this.o.policy, snap.account.positions, snap.orders, snap.markets);
     await this.o.journal.append(
@@ -242,7 +250,27 @@ export class Engine {
     );
     for (const c of plan.cancels)
       await this.cancel(c, kind === 'kill_switch' ? 'kill switch' : 'session close-out');
-    for (const r of plan.reduces) await this.submit(r);
+    const problems: string[] = [];
+    for (const r of plan.reduces) {
+      // submit reads the account again. A position that shrank since the plan is blocked (NOT_REDUCING)
+      // instead of being sent long and flipping, because the pool will not clamp a regular order.
+      const sent = await this.submit(r);
+      const filled = sent.execution?.result.filled;
+      if (sent.execution === undefined) {
+        const codes = sent.decision.codes.join(',');
+        problems.push(
+          `${r.market}: reduce not sent (${sent.decision.verdict}${codes === '' ? '' : ` ${codes}`})`,
+        );
+      } else if (!sent.execution.result.ok) {
+        const name = sent.execution.result.errorName ?? sent.execution.result.error ?? 'rejected';
+        problems.push(`${r.market}: venue rejected the reduce (${name})`);
+      } else if (filled === undefined || filled < r.quantity) {
+        problems.push(
+          `${r.market}: partial fill ${(filled ?? 0n).toString()} of ${r.quantity.toString()}; remainder is not closed yet`,
+        );
+      }
+    }
+    return { plan, problems };
   }
 
   head(): Hex | undefined {

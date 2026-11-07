@@ -6,6 +6,8 @@ import {
   EMPTY_MEMORY,
   deviationBps,
   evaluate,
+  isReducing,
+  notional,
   onGrid,
   parsePolicy,
   utcDay,
@@ -17,6 +19,7 @@ import {
   exitPrice,
   onEquity,
   planFlatten,
+  reducibleQuantity,
   reset,
   tripManually,
 } from '../src/killswitch/index.js';
@@ -106,13 +109,21 @@ describe('flatten plan', () => {
       'ETH-PERP': { ...ETH, tickSize: E(1000) },
     });
     expect(plan.reduces).toEqual([]);
-    expect(plan.skipped.map((s) => s.why)).toEqual([
-      'below the venue minimum order size',
-      'tick is too coarse for the price band',
-      'no mark price to price the exit',
+    expect(plan.skipped.map((s) => [s.market, s.terminal])).toEqual([
+      ['BTC-PERP', true],
+      ['ETH-PERP', true],
+      ['XYZ-PERP', false],
     ]);
+    expect(plan.skipped[0]?.why).toContain('minQuantity');
+    expect(plan.skipped[0]?.why).toContain('increase exposure');
+    expect(plan.skipped[0]?.why).toContain('not flat');
+    expect(plan.skipped[1]?.why).toContain('tick is too coarse');
+    expect(plan.skipped[2]?.why).toContain('no mark price');
     const off = parsePolicy({ ...DEMO_POLICY, killSwitch: { maxDrawdownBps: 500, flattenPositions: false } });
-    expect(planFlatten(off, { 'BTC-PERP': 26_000n }, [], markets).reduces).toEqual([]);
+    const held = planFlatten(off, { 'BTC-PERP': 26_000n }, [], markets);
+    expect(held.reduces).toEqual([]);
+    expect(held.skipped.map((s) => s.terminal)).toEqual([true]);
+    expect(held.skipped[0]?.why).toContain('flattenPositions is off');
   });
 
   it('property: exit prices sit on the tick, on the crossing side, inside the band', () => {
@@ -130,6 +141,46 @@ describe('flatten plan', () => {
           expect(deviationBps(p, mark) <= BigInt(band)).toBe(true);
           if (sell) expect(p <= mark).toBe(true);
           else expect(p >= mark - tick).toBe(true);
+        },
+      ),
+    );
+  });
+
+  it('property: a reduce never exceeds the position, the minimum, or the lot', () => {
+    fc.assert(
+      fc.property(
+        fc.bigInt({ min: 1n, max: 10n ** 24n }),
+        fc.bigInt({ min: 1n, max: 10n ** 9n }),
+        fc.bigInt({ min: 1n, max: 10n ** 9n }),
+        fc.integer({ min: 6, max: 18 }),
+        fc.boolean(),
+        (held, lot, minQ, decimals, short) => {
+          const position = short ? -held : held;
+          const market = {
+            ...BTC,
+            baseDecimals: decimals,
+            lotSize: lot,
+            minQuantity: minQ,
+            tickSize: 1n,
+            markPrice: 10n ** 18n,
+          };
+          const plan = planFlatten(policy, { 'BTC-PERP': position }, [], { 'BTC-PERP': market });
+          expect(plan.reduces.length).toBeLessThanOrEqual(1);
+          for (const r of plan.reduces) {
+            expect(r.reduceOnly).toBe(true);
+            expect(r.quantity <= held).toBe(true);
+            expect(r.quantity >= minQ).toBe(true);
+            expect(onGrid(r.quantity, lot)).toBe(true);
+            expect(isReducing(position, r)).toBe(true);
+            expect(notional(r.price, r.quantity, decimals) > 0n).toBe(true);
+            expect(r.side).toBe(short ? 'long' : 'short');
+          }
+          const fit = reducibleQuantity(position, market);
+          if (fit !== undefined) expect(fit <= held && fit >= minQ && onGrid(fit, lot)).toBe(true);
+          if (plan.reduces.length === 0) {
+            expect(plan.skipped).toHaveLength(1);
+            expect(plan.skipped[0]?.why).toContain('not flat');
+          }
         },
       ),
     );
